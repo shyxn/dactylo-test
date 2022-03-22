@@ -36,6 +36,7 @@ namespace DactyloTest
         /// Index répertoriant le texte joué dans DactylModel._texts
         /// </summary>
         public int TextIndex { get; set; }
+        public DateTime Date { get; set; }
 
         public HighScore()
         {

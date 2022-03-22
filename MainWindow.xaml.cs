@@ -13,36 +13,53 @@ namespace DactyloTest
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string version = "0.0.2";
+        /// <summary>
+        ///  Version actuelle du programme
+        /// </summary>
+        private string _version = "0.0.2";
+        /// <summary>
+        /// Contrôleur 
+        /// </summary>
         private DactylCtrl _dactylCtrl;
         public MainWindow()
         {
+            // Définir le pattern MVC
             DactylModel dactylModel = new DactylModel();
             this._dactylCtrl = new DactylCtrl(this, dactylModel);
+
             InitializeComponent();
-            this.Title = "DactyloTest v" + this.version;
-            this.title.Text = "DactyloTest (P_APPRO) v" + this.version + " - Morgane Lebre";           
+
+            this.Title = "DactyloTest v" + this._version;
+            this.title.Text = "DactyloTest (P_APPRO) v" + this._version + " - Morgane Lebre";           
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            ShowNickNameInput();
-            Start();
-        }
+        /// <summary>
+        /// Affiche la fenêtre de sélection du pseudonyme
+        /// </summary>
         public void ShowNickNameInput()
         {
             this.nicknameInputCanvas.Visibility = Visibility.Visible;
             this.inputNickname.Focus();
         }
-        public void Start()
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            ShowNickNameInput();
             Debug.WriteLine("La partie commence.");
             this.InputTextBox.TextChanged += new TextChangedEventHandler(TextBox_TextChanged);
-            this._dactylCtrl.StartGame();
+            //this._dactylCtrl.StartGame();
+            this.inputNickname.Focus();
         }
+        
+        /// <summary>
+        /// Mettre le focus sur la zone à taper pour détecter les caractères entrés.
+        /// </summary>
         public void FocusInput()
         {
             this.InputTextBox.Focus();
         }
+        /// <summary>
+        /// Actualiser le label du temps
+        /// </summary>
+        /// <param name="time"></param>
         public void UpdateTime(string time)
         {
             this.totalTime.Text = "Temps : " + time;
@@ -80,14 +97,17 @@ namespace DactyloTest
         {
             MessageBox.Show(message, "DactyloTest");
         }
+
         public void ShowCorrectChar()
         {
             this.midSideText.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#45607C"));
         }
+
         public void ShowIncorrectChar()
         {
             this.midSideText.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#93032E"));
         }
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this._dactylCtrl.InputText != null && this._dactylCtrl.InputText.Length > this.InputTextBox.Text.Length){ return; }
@@ -97,8 +117,8 @@ namespace DactyloTest
                 Debug.WriteLine("Un caractère a été entré : " + newChar);
                 this._dactylCtrl.CheckChar(newChar);
             }
-            // this._dactylCtrl.CheckChar(e);
         }
+
         private void InputTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             this._dactylCtrl.InputText = this.InputTextBox.Text;
@@ -144,6 +164,11 @@ namespace DactyloTest
             this._dactylCtrl.StopTimers();
             this.nicknameInputCanvas.Visibility = Visibility.Visible;
             this.inputNickname.Focus();
+        }
+
+        private void scoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new ScoresWindow(this._dactylCtrl).Show();
         }
     }
 }

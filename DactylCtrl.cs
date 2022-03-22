@@ -11,7 +11,7 @@ namespace DactyloTest
         private DactylModel _dactylModel;
         private MainWindow _mainWindow;
         private string _playerNickname;
-        
+
         private int _inputIndex;
         private DateTime _gameStartTime;
         public TimeSpan TotalTime { get; set; }
@@ -44,6 +44,7 @@ namespace DactyloTest
 
             int wpm = this.CalculateWPM();
             this._mainWindow.UpdateWPM(wpm.ToString());
+
             double accuracy = this.CalculateAccuracy();
             this._mainWindow.UpdateAccuracy(String.Format("{0:0.00}", accuracy * 100));
         }
@@ -52,7 +53,7 @@ namespace DactyloTest
             this.UpdateTexts();
         }
         private void UpdateTime()
-        {   
+        {
             string timeString = this.TotalTime.ToString(@"mm\:ss\.ff");
             this._mainWindow.UpdateTime(timeString);
             this._mainWindow.FocusInput();
@@ -62,6 +63,10 @@ namespace DactyloTest
             this.TotalTime = DateTime.Now - this._gameStartTime;
         }
 
+        /// <summary>
+        /// Démarre une partie.
+        /// </summary>
+        /// <param name="restart">false pour rechercher un nouveau texte, sinon true.</param>
         public void StartGame(bool restart = false)
         {
             this.StopTimers();
@@ -108,29 +113,26 @@ namespace DactyloTest
         }
         public void CheckChar(char newChar)
         {
+            // Déclenche les timers lors de la première frappe
             if (this._chronoTickTimer.IsEnabled != true)
             {
                 StartTimers();
             }
 
             this.KeyStrokes++;
+            // Si la lettre est correcte
             if (newChar == this._currentText[this._inputIndex])
             {
                 this.CorrectStrokes++;
                 Debug.WriteLine("Bon caractère");
-                // Si la lettre est correcte
                 this._inputIndex++;
                 this._mainWindow.ShowCorrectChar();
 
                 // Si c'est la fin du jeu
                 if (this._inputIndex == this._currentText.Length)
-                {
                     this.EndGame();
-                }
                 else
-                {
                     this.UpdateTexts();
-                }
             }
             else
             {
@@ -143,7 +145,7 @@ namespace DactyloTest
         private void EndGame()
         {
             StopTimers();
-            
+
             // Gérer le score
             var score = new HighScore()
             {
@@ -154,11 +156,12 @@ namespace DactyloTest
                 Time = this.TotalTime,
                 TotalStrokes = this.KeyStrokes,
                 WPM = this.CalculateWPM(),
-                TextIndex = this._dactylModel.GetTextIndex(this._currentText)
+                TextIndex = this._dactylModel.GetTextIndex(this._currentText),
+                Date = DateTime.Now
             };
             score.CalculateScore();
             score.CalculateSpeed();
-            if (string.IsNullOrEmpty(this._playerNickname))
+            if (!string.IsNullOrEmpty(this._playerNickname))
             {
                 this._dactylModel.SaveHighScore(score);
             }
@@ -167,6 +170,9 @@ namespace DactyloTest
             this.StartGame();
         }
 
+        /// <summary>
+        /// Découpe les bouts de phrase à afficher (gauche, milieu et droite) et les envoie à la vue
+        /// </summary>
         private void UpdateTexts()
         {
             // Char à entrer pour l'utilisateur
@@ -174,13 +180,13 @@ namespace DactyloTest
 
             // Partie gauche du texte (passée)
             // à crop pour qu'elle ne dépasse pas le conteneur
-            string leftString = this._inputIndex < 15 
+            string leftString = this._inputIndex < 15
                 ? this._currentText.Substring(0, this._inputIndex)
                 : "…" + this._currentText.Substring(this._inputIndex - 15, 15);
 
             // Partie droite du texte (future)
             string rightString = this._currentText.Substring(this._inputIndex + 1);
-            
+
             this._mainWindow.UpdateMainText(leftString, midChar, rightString);
         }
 
@@ -188,10 +194,14 @@ namespace DactyloTest
         {
             return (int)(this.CorrectStrokes / 5 / this.TotalTime.TotalSeconds * 60);
         }
-
         public double CalculateAccuracy()
         {
             return (double)this.CorrectStrokes / (double)this.KeyStrokes;
+        }
+
+        public List<HighScore> GetScores()
+        {
+            return _dactylModel._highScores;
         }
     }
 }

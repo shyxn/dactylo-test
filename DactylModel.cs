@@ -19,7 +19,7 @@ namespace DactyloTest
 
         public DactylModel()
         {
-
+            LoadHighScores();
         }
         public string GetRandomText()
         {

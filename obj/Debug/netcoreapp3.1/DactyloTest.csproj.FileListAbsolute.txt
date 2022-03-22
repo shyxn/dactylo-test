@@ -46,3 +46,5 @@ C:\Users\pe41qrd\Desktop\dactylo-test\obj\Debug\netcoreapp3.1\DactyloTest.dll
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Debug\netcoreapp3.1\DactyloTest.pdb
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Debug\netcoreapp3.1\DactyloTest.genruntimeconfig.cache
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Debug\netcoreapp3.1\DactyloTest.csproj.AssemblyReference.cache
+C:\Users\pe41qrd\Desktop\dactylo-test\obj\Debug\netcoreapp3.1\ScoresWindow.g.cs
+C:\Users\pe41qrd\Desktop\dactylo-test\obj\Debug\netcoreapp3.1\ScoresWindow.baml
