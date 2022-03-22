@@ -14,7 +14,7 @@ namespace DactyloTest
         
         private int _inputIndex;
         private DateTime _gameStartTime;
-        private TimeSpan _totalTime;
+        public TimeSpan TotalTime { get; set; }
         public int KeyStrokes { get; set; } = 0;
         public int CorrectStrokes { get; set; } = 0;
         public int IncorrectStrokes { get; set; } = 0;
@@ -24,6 +24,10 @@ namespace DactyloTest
         private System.Windows.Threading.DispatcherTimer _gameTickTimer = new System.Windows.Threading.DispatcherTimer();
         private System.Windows.Threading.DispatcherTimer _chronoTickTimer = new System.Windows.Threading.DispatcherTimer();
 
+        public DactylCtrl()
+        {
+
+        }
         public DactylCtrl(MainWindow mainW, DactylModel dactylModel)
         {
             this._mainWindow = mainW;
@@ -37,8 +41,11 @@ namespace DactyloTest
         {
             this.CalulatePassedTime();
             this.UpdateTime();
-            this.CalculateWPM();
-            this.CalculateAccuracy();
+
+            int wpm = this.CalculateWPM();
+            this._mainWindow.UpdateWPM(wpm.ToString());
+            double accuracy = this.CalculateAccuracy();
+            this._mainWindow.UpdateAccuracy(String.Format("{0:0.00}", accuracy * 100));
         }
         private void GameTickTimer_Tick(object sender, EventArgs e)
         {
@@ -46,13 +53,13 @@ namespace DactyloTest
         }
         private void UpdateTime()
         {   
-            string timeString = this._totalTime.ToString(@"mm\:ss\.ff");
+            string timeString = this.TotalTime.ToString(@"mm\:ss\.ff");
             this._mainWindow.UpdateTime(timeString);
             this._mainWindow.FocusInput();
         }
         private void CalulatePassedTime()
         {
-            this._totalTime = DateTime.Now - this._gameStartTime;
+            this.TotalTime = DateTime.Now - this._gameStartTime;
         }
 
         public void StartGame(bool restart = false)
@@ -69,7 +76,7 @@ namespace DactyloTest
             }
             this.UpdateTexts();
             this._mainWindow.FocusInput();
-            this._totalTime = TimeSpan.Zero;
+            this.TotalTime = TimeSpan.Zero;
             // StartTimers();
         }
         public void GetNewText()
@@ -84,7 +91,6 @@ namespace DactyloTest
 
             this.UpdateTexts();
         }
-
         public void StartTimers()
         {
             this._gameTickTimer.IsEnabled = true;
@@ -145,7 +151,7 @@ namespace DactyloTest
                 Nickname = this._playerNickname,
                 CorrectStrokes = this.CorrectStrokes,
                 IncorrectStrokes = this.IncorrectStrokes,
-                Time = this._totalTime,
+                Time = this.TotalTime,
                 TotalStrokes = this.KeyStrokes,
                 WPM = this.CalculateWPM(),
                 TextIndex = this._dactylModel.GetTextIndex(this._currentText)
@@ -178,19 +184,14 @@ namespace DactyloTest
             this._mainWindow.UpdateMainText(leftString, midChar, rightString);
         }
 
-        private int CalculateWPM()
+        public int CalculateWPM()
         {
-            double secondsPassed = this._totalTime.TotalSeconds;
-            int WPM = (int)(this.CorrectStrokes / 5 / secondsPassed * 60);
-            this._mainWindow.UpdateWPM(WPM.ToString());
-            return WPM;
+            return (int)(this.CorrectStrokes / 5 / this.TotalTime.TotalSeconds * 60);
         }
 
-        private double CalculateAccuracy()
+        public double CalculateAccuracy()
         {
-            double percent = (double)this.CorrectStrokes / (double)this.KeyStrokes;
-            this._mainWindow.UpdateAccuracy(String.Format("{0:0.00}", percent * 100));
-            return percent;
+            return (double)this.CorrectStrokes / (double)this.KeyStrokes;
         }
     }
 }

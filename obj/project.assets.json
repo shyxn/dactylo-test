@@ -15,11 +15,11 @@
   "project": {
     "version": "0.0.1",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pe41qrd\\Desktop\\P_APPRO\\DactyloTest\\DactyloTest.csproj",
+      "projectUniqueName": "C:\\Users\\pe41qrd\\Desktop\\dactylo-test\\DactyloTest.csproj",
       "projectName": "DactyloTest",
-      "projectPath": "C:\\Users\\pe41qrd\\Desktop\\P_APPRO\\DactyloTest\\DactyloTest.csproj",
+      "projectPath": "C:\\Users\\pe41qrd\\Desktop\\dactylo-test\\DactyloTest.csproj",
       "packagesPath": "C:\\Users\\pe41qrd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pe41qrd\\Desktop\\P_APPRO\\DactyloTest\\obj\\",
+      "outputPath": "C:\\Users\\pe41qrd\\Desktop\\dactylo-test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
