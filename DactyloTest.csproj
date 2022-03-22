@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icons8-utilisateur-48.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>3</VersionMinor>
+      <VersionMajor>5</VersionMajor>
+      <Guid>0002e157-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons8-utilisateur-48.png" />
+    <Resource Include="Resources\Poppins-Black.ttf" />
+    <Resource Include="Resources\Poppins-BlackItalic.ttf" />
+    <Resource Include="Resources\Poppins-Bold.ttf" />
+    <Resource Include="Resources\Poppins-BoldItalic.ttf" />
+    <Resource Include="Resources\Poppins-ExtraBold.ttf" />
+    <Resource Include="Resources\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="Resources\Poppins-ExtraLight.ttf" />
+    <Resource Include="Resources\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="Resources\Poppins-Italic.ttf" />
+    <Resource Include="Resources\Poppins-Light.ttf" />
+    <Resource Include="Resources\Poppins-LightItalic.ttf" />
+    <Resource Include="Resources\Poppins-Medium.ttf" />
+    <Resource Include="Resources\Poppins-MediumItalic.ttf" />
+    <Resource Include="Resources\Poppins-Regular.ttf" />
+    <Resource Include="Resources\Poppins-SemiBold.ttf" />
+    <Resource Include="Resources\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="Resources\Poppins-Thin.ttf" />
+    <Resource Include="Resources\Poppins-ThinItalic.ttf" />
+    <Resource Include="Resources\SourceCodePro-Black.ttf" />
+    <Resource Include="Resources\SourceCodePro-BlackItalic.ttf" />
+    <Resource Include="Resources\SourceCodePro-Bold.ttf" />
+    <Resource Include="Resources\SourceCodePro-BoldItalic.ttf" />
+    <Resource Include="Resources\SourceCodePro-ExtraBold.ttf" />
+    <Resource Include="Resources\SourceCodePro-ExtraBoldItalic.ttf" />
+    <Resource Include="Resources\SourceCodePro-ExtraLight.ttf" />
+    <Resource Include="Resources\SourceCodePro-ExtraLightItalic.ttf" />
+    <Resource Include="Resources\SourceCodePro-Italic.ttf" />
+    <Resource Include="Resources\SourceCodePro-Light.ttf" />
+    <Resource Include="Resources\SourceCodePro-LightItalic.ttf" />
+    <Resource Include="Resources\SourceCodePro-Medium.ttf" />
+    <Resource Include="Resources\SourceCodePro-MediumItalic.ttf" />
+    <Resource Include="Resources\SourceCodePro-Regular.ttf" />
+    <Resource Include="Resources\SourceCodePro-SemiBold.ttf" />
+    <Resource Include="Resources\SourceCodePro-SemiBoldItalic.ttf" />
+  </ItemGroup>
+
+</Project>

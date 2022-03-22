@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ArrayOfHighScore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="HighScores.Scores">
+  <HighScore>
+    <Score>1029</Score>
+    <CPS>8.966144415930584</CPS>
+    <WPM>107</WPM>
+    <Nickname>Jean</Nickname>
+    <Accuracy>0.9617021276595744</Accuracy>
+    <TotalStrokes>470</TotalStrokes>
+    <CorrectStrokes>452</CorrectStrokes>
+    <IncorrectStrokes>18</IncorrectStrokes>
+    <Time>PT50.4118581S</Time>
+    <TextIndex>0</TextIndex>
+  </HighScore>
+</ArrayOfHighScore>

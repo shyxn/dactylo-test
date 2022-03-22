@@ -1,0 +1,11 @@
+﻿<Application x:Class="DactyloTest.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DactyloTest"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+        <FontFamily x:Key="Poppins">pack://application:,,,/Resources/#Poppins</FontFamily>
+        <FontFamily x:Key="Source Code Pro">pack://application:,,,/Resources/#Source Code Pro</FontFamily>
+    </Application.Resources>
+</Application>
