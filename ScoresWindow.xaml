@@ -5,102 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DactyloTest"
         mc:Ignorable="d"
-        Title="Scores - DactyloTest" Height="450" Width="1350" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
-
+        Title="Scores - DactyloTest" Height="450" Width="1284" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Background="#212F3D">
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
             <StackPanel Margin="15">
-                <Grid x:Name="scoreTable" ShowGridLines="True">
-                </Grid>
-
+                <StackPanel x:Name="Titles" Height="100">
+                    <TextBlock FontFamily="Poppins" FontSize="40" Foreground="White" Canvas.Left="8" Canvas.Top="-102" Margin="15,0,0,0" FontWeight="Bold">Tableau des scores</TextBlock>
+                </StackPanel>
+                
+                <Grid x:Name="scoreTable" Margin="0, 115, 0, 0"/>
             </StackPanel>
         </ScrollViewer>
-
-        <FlowDocumentScrollViewer Background="#212F3D" Margin="0, 300, 0, 0">
-            <FlowDocument>
-                <Table TextAlignment="Center" FontFamily="Poppins">
-                    <Table.Columns>
-                        <TableColumn />
-                        <TableColumn />
-                        <TableColumn />
-                        <TableColumn />
-                        <TableColumn />
-                        <TableColumn />
-                        <TableColumn />
-                        <TableColumn />
-                        <TableColumn />
-                        <TableColumn />
-                    </Table.Columns>
-                    <TableRowGroup x:Name="Records">
-                        <TableRow>
-                            <TableCell>
-                                <Paragraph>Nickname</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>Score</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>CPS</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>WPM</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>Accuracy</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>TotalStrokes</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>CorrectStrokes</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>Time</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>Texte</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>Date</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>
-                                <Paragraph>Jean</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>664</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>5.3</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>67</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>98.70 %</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>512</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>490</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>00:01:12</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <!-- Mettre les trois petits points comme sur les textbox-->
-                                <Paragraph >"il était une fois.."</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>22/03/2022 15:09:47</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                    </TableRowGroup>
-                </Table>
-            </FlowDocument>
-        </FlowDocumentScrollViewer>
     </Grid>
 </Window>
     

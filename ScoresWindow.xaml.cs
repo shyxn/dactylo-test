@@ -37,36 +37,50 @@ namespace DactyloTest
                 "Score",
                 "CPS",
                 "WPM",
-                "Accuracy",
-                "TotalStrokes",
-                "CorrectStrokes",
-                "Time",
-                "Texte",
-                "Date"
+                "Précision",
+                "Frappes totales",
+                "incorrectes",
+                "Temps total",
+                "Texte tapé",
+                "Date enregistrée"
             };
+
+            this.scoreTable.RowDefinitions.Add(new RowDefinition());
+            
+
+
             for (int i = 0; i < headers.Length; i++)
             {
+                string name = headers[i].Trim();
+
                 this.scoreTable.ColumnDefinitions.Add(new ColumnDefinition()
                 {
-                    SharedSizeGroup = headers[i],
-                    Width = new GridLength(1, GridUnitType.Star)
+                    SharedSizeGroup = headers[i].Replace(" ", ""),
+                    Width = GridLength.Auto
                 });
 
                 TextBlock textBlock = new TextBlock
                 {
                     Text = headers[i],
                     FontFamily = new FontFamily("Poppins"),
-                    FontSize = 13,
+                    Foreground = Brushes.White,
+                    FontSize = 14,
+                    FontWeight = FontWeights.Bold,
+                    TextAlignment = TextAlignment.Center,
+                    Margin = new Thickness(15, 0, 15, 5),
                 };
-                textBlock.SetValue(Grid.ColumnProperty, i);
-                this.scoreTable.Children.Add(textBlock);
+                Border border = new Border() { BorderBrush = Brushes.White, BorderThickness = new Thickness(0, 0, 0, 1) };
+                border.Child = textBlock;
+
+                border.SetValue(Grid.ColumnProperty, i);
+                //textBlock.SetValue(Grid.RowProperty, 0);
+                this.scoreTable.Children.Add(border);
             }
-            
-            //foreach (HighScore highScore in this._dactylCtrl.GetAllScores())
-            //{
-            //    AddRow(FormatHighScoreData(highScore));
-            //}
-            //SortScores();
+
+            foreach (HighScore highScore in this._dactylCtrl.GetAllScores())
+            {
+                AddRow(FormatHighScoreData(highScore));
+            }
         }
 
         private void SortScores()
@@ -82,19 +96,25 @@ namespace DactyloTest
         }
         private void AddRow(List<string> formattedHighScores)
         {
-            TableRow newTableRow = new TableRow();
+            this.scoreTable.RowDefinitions.Add(new RowDefinition());
 
-            foreach (string data in formattedHighScores)
+            for (int i = 0; i < formattedHighScores.Count; i++)
             {
-                Paragraph paragraph = new Paragraph();
-                TableCell tableCell = new TableCell();
-                paragraph.Inlines.Add(data);
-                tableCell.Blocks.Add(paragraph);
-                tableCell.BorderThickness = new Thickness(0, 1, 0, 0);
-                tableCell.BorderBrush = Brushes.Black;
-                newTableRow.Cells.Add(tableCell);
+                TextBlock textBlock = new TextBlock
+                {
+                    Text = formattedHighScores[i],
+                    FontFamily = new FontFamily("Poppins"),
+                    Foreground = Brushes.White,
+                    FontSize = 14,
+                    TextAlignment = TextAlignment.Center,
+                    Margin = new Thickness(15, 10, 15, 5),
+                    MaxWidth = 200,
+                    TextTrimming = TextTrimming.CharacterEllipsis
+                };
+                textBlock.SetValue(Grid.ColumnProperty, i);
+                textBlock.SetValue(Grid.RowProperty, this.scoreTable.RowDefinitions.Count - 1);
+                this.scoreTable.Children.Add(textBlock);
             }
-            this.Records.Rows.Add(newTableRow);
         }
 
         private List<string> FormatHighScoreData(HighScore highScore)
@@ -107,11 +127,12 @@ namespace DactyloTest
                 highScore.WPM.ToString(),
                 String.Format("{0:0.00} %", highScore.Accuracy * 100),
                 highScore.TotalStrokes.ToString(),
-                highScore.CorrectStrokes.ToString(),
+                highScore.IncorrectStrokes.ToString(),
                 highScore.Time.ToString(@"mm\:ss\:ff"),
-                this._dactylCtrl.GetTextFromIndex(highScore.TextIndex).Substring(0, 10) + "…",
+                this._dactylCtrl.GetTextFromIndex(highScore.TextIndex),
                 highScore.Date.ToString("G")
             };
         }
+        
     }
 }

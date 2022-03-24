@@ -43,7 +43,7 @@
     <Score>530</Score>
     <CPS>4.763975078632098</CPS>
     <WPM>56</WPM>
-    <Nickname>ta mere</Nickname>
+    <Nickname>Loïc</Nickname>
     <Accuracy>0.9460093896713615</Accuracy>
     <TotalStrokes>426</TotalStrokes>
     <CorrectStrokes>403</CorrectStrokes>
@@ -51,5 +51,18 @@
     <Time>PT1M24.5932217S</Time>
     <TextIndex>2</TextIndex>
     <Date>2022-03-23T14:06:57.6356461+01:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>829</Score>
+    <CPS>7.643372956791056</CPS>
+    <WPM>91</WPM>
+    <Nickname>Morgane</Nickname>
+    <Accuracy>0.9111111111111111</Accuracy>
+    <TotalStrokes>540</TotalStrokes>
+    <CorrectStrokes>492</CorrectStrokes>
+    <IncorrectStrokes>48</IncorrectStrokes>
+    <Time>PT1M4.3694875S</Time>
+    <TextIndex>1</TextIndex>
+    <Date>2022-03-24T11:57:47.3521024+01:00</Date>
   </HighScore>
 </ArrayOfHighScore>
