@@ -15,57 +15,29 @@
             <Border BorderThickness="0, 0, 0, 2" BorderBrush="White" Background="Transparent" Canvas.Left="169" Canvas.Top="56" Width="461">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Grid HorizontalAlignment="Center">
-                        <TextBlock x:Name="leftSideText" FontFamily="{StaticResource Source Code Pro}" Width="220" HorizontalAlignment="Center" TextAlignment="Right" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" FlowDirection="LeftToRight" FontSize="22" Height="33" FontWeight="DemiBold" Grid.IsSharedSizeScope="True" Foreground="White"/>
+                        <TextBlock x:Name="leftSideText" FontFamily="{StaticResource Source Code Pro}" Width="220" HorizontalAlignment="Center" TextAlignment="Right" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" FlowDirection="LeftToRight" FontSize="22" Height="33" FontWeight="DemiBold" Foreground="White"/>
                     </Grid>
-                    <TextBlock x:Name="midSideText" FontFamily="{StaticResource Source Code Pro}" VerticalAlignment="Center" FontSize="22" FontWeight="DemiBold" TextAlignment="Center" Height="33" FontStretch="Normal" Width="18" Grid.IsSharedSizeScope="True" Background="#FF45607C" Foreground="White"/>
-                    <TextBlock x:Name="rightSideText" FontFamily="{StaticResource Source Code Pro}" Width="220" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" FontSize="22" Height="33" FontWeight="DemiBold" Grid.IsSharedSizeScope="True" Foreground="White"/>
+                    <TextBlock x:Name="midSideText" FontFamily="{StaticResource Source Code Pro}" VerticalAlignment="Center" FontSize="22" FontWeight="DemiBold" TextAlignment="Center" Height="33" FontStretch="Normal" Width="18" Background="#FF45607C" Foreground="White"/>
+                    <TextBlock x:Name="rightSideText" FontFamily="{StaticResource Source Code Pro}" Width="220" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" FontSize="22" Height="33" FontWeight="DemiBold" Foreground="White"/>
                 </StackPanel>
             </Border>
+            
+            <!-- Panneau des statistiques -->
             <Border BorderThickness="1, 0, 0, 1" BorderBrush="White" Background="Transparent" Width="276" Canvas.Left="82" Canvas.Top="146">
                 <StackPanel Margin="10,0,0,0">
-                    <TextBlock x:Name="totalTime" FontFamily="{StaticResource Poppins}" Foreground="White" FontSize="20" Height="30"/>
-                    <TextBlock x:Name="totalStrokes" FontFamily="{StaticResource Poppins}" Foreground="White" FontSize="20" Height="30"/>
-                    <TextBlock x:Name="totalCorrectStrokes" FontFamily="{StaticResource Poppins}" Foreground="White" FontSize="20" Height="30"/>
-                    <TextBlock x:Name="totalIncorrectStrokes" FontFamily="{StaticResource Poppins}" Foreground="White" FontSize="20" Height="30"/>
-                    <TextBlock x:Name="currentWPM" FontFamily="{StaticResource Poppins}" FontWeight="SemiBold" FontSize="20" Height="30"  Foreground="White"/>
-                    <TextBlock x:Name="currentAccuracy" FontFamily="{StaticResource Poppins}" FontWeight="SemiBold" FontSize="20" Height="30" Foreground="White"/>
+                    <TextBlock x:Name="totalTime" Style="{StaticResource StatTxtBox}"/>
+                    <TextBlock x:Name="totalStrokes" Style="{StaticResource StatTxtBox}"/>
+                    <TextBlock x:Name="totalCorrectStrokes" Style="{StaticResource StatTxtBox}"/>
+                    <TextBlock x:Name="totalIncorrectStrokes" Style="{StaticResource StatTxtBox}"/>
+                    <TextBlock x:Name="currentWPM" FontWeight="SemiBold" Style="{StaticResource StatTxtBox}"/>
+                    <TextBlock x:Name="currentAccuracy" FontWeight="SemiBold" Style="{StaticResource StatTxtBox}"/>
                 </StackPanel>
             </Border>
-            <StackPanel>
 
-            </StackPanel>
-            <Button x:Name="quitBtn" Click="quitBtn_Click" FontFamily="{StaticResource Poppins}" Height="43" Width="87" Focusable="False" Canvas.Left="483" Canvas.Top="257" Background="#FFBBCAD8" Foreground="#FF212F3D" FontSize="16" BorderThickness="0,0,0,0">
-                Quitter
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="12"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="restartBtn" Click="restartBtn_Click" FontFamily="{StaticResource Poppins}" Height="43" Width="149" Focusable="False" Canvas.Left="483" Canvas.Top="209" Background="#FFBBCAD8" Foreground="#FF212F3D" FontSize="16" BorderThickness="0,0,0,0">
-                Recommencer
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="12"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="scoreBtn" Click="scoreBtn_Click" FontFamily="{StaticResource Poppins}" Height="28" Width="114" Focusable="False" Canvas.Left="14" Canvas.Top="46" Background="#FFBBCAD8" Foreground="#FF212F3D" BorderThickness="0,0,0,0" FontSize="13">
-                Voir les scores
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="anotherTextBtn" Click="anotherTextBtn_Click" FontFamily="{StaticResource Poppins}" Height="43" Width="207" Focusable="False" Canvas.Left="483" Canvas.Top="161" Background="#FFBBCAD8" Foreground="#FF212F3D" FontSize="16" BorderThickness="0,0,0,0">
-                Générer un autre texte
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="12"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            <Button x:Name="quitBtn" Click="quitBtn_Click" Width="87" Canvas.Left="483" Canvas.Top="259" Style="{StaticResource RoundBasicBtn}" >Quitter</Button>
+            <Button x:Name="restartBtn" Click="restartBtn_Click" Width="149" Canvas.Left="483" Canvas.Top="209" Style="{StaticResource RoundBasicBtn}">Recommencer</Button>
+            <Button x:Name="scoreBtn" Click="scoreBtn_Click" Width="114" Height="28" FontSize="13" Canvas.Left="14" Canvas.Top="46" Style="{StaticResource RoundBasicBtn}">Voir les scores</Button>
+            <Button x:Name="anotherTextBtn" Click="anotherTextBtn_Click" Style="{StaticResource RoundBasicBtn}" Width="207" Canvas.Left="483" Canvas.Top="159">Générer un autre texte</Button>
             <!-- Focusable = "False" sinon ça ne marche pas (merci Ahmad Jano) -->
             <Button x:Name="ChangeNickname" Canvas.Left="14" Canvas.Top="9" Click="ChangeNickname_Click" Focusable="False">
                 <Button.Template>
@@ -85,14 +57,7 @@
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
-                <Button x:Name="confirmNicknameBtn" Canvas.Left="88" Canvas.Top="113" Width="88" FontFamily="Poppins" BorderBrush="#FF212F3D" BorderThickness="0,0,0,0" Background="#FF212F3D" Foreground="White" Height="25" FontWeight="SemiBold" Click="confirmNicknameBtn_Click" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
-                    Valider
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="12"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
+                <Button x:Name="confirmNicknameBtn" Canvas.Left="88" Canvas.Top="113" Click="confirmNicknameBtn_Click" Style="{StaticResource ValidateNicknameBtn}">Valider</Button>
                 <Label Canvas.Left="26" Canvas.Top="12" FontFamily="Poppins" FontSize="18" FontWeight="Bold" Height="36" Width="212" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
                     Entrez un pseudo :
                 </Label>

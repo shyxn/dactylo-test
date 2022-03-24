@@ -75,14 +75,13 @@ namespace DactyloTest
             CorrectStrokes = 0;
             IncorrectStrokes = 0;
             this._mainWindow.ClearAllTexts();
-            if (!restart)
+            if (!restart || this._currentText is null)
             {
                 this.GetNewText();
             }
             this.UpdateTexts();
             this._mainWindow.FocusInput();
             this.TotalTime = TimeSpan.Zero;
-            // StartTimers();
         }
         public void GetNewText()
         {

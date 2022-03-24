@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DactyloTest"
         mc:Ignorable="d"
-        Title="Scores - DactyloTest" Height="450" Width="1284" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Background="#212F3D">
+        Title="Scores - DactyloTest" Height="450" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Visible">
             <StackPanel Margin="15">
-                <StackPanel x:Name="Titles" Height="100">
-                    <TextBlock FontFamily="Poppins" FontSize="40" Foreground="White" Canvas.Left="8" Canvas.Top="-102" Margin="15,0,0,0" FontWeight="Bold">Tableau des scores</TextBlock>
-                </StackPanel>
-                
-                <Grid x:Name="scoreTable" Margin="0, 115, 0, 0"/>
+                <Canvas x:Name="Titles" Height="124">
+                    <TextBlock FontFamily="Poppins" FontSize="40" Foreground="White" Canvas.Top="10" Margin="15,0,0,0" FontWeight="Bold">Tableau des scores</TextBlock>
+                    <Button x:Name="OnlyMyScores" Canvas.Left="131" Canvas.Top="79"  Style="{StaticResource RoundBasicBtn}" Width="222" Height="35">Seulement mes scores</Button>
+                    <Button x:Name="AllScores" Width="92" Content="Tous" Canvas.Top="79" Canvas.Left="15" Height="35" Style="{StaticResource RoundBasicBtn}"/>
+                </Canvas>
+
+                <Grid x:Name="scoreTable"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

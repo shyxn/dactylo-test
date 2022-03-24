@@ -4,12 +4,149 @@
              xmlns:local="clr-namespace:DactyloTest"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
         <FontFamily x:Key="Poppins">pack://application:,,,/Resources/#Poppins</FontFamily>
         <FontFamily x:Key="Source Code Pro">pack://application:,,,/Resources/#Source Code Pro</FontFamily>
+
         <Style x:Key="headerBorder" TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="0, 0, 0, 1" />
             <Setter Property="BorderBrush" Value="White" />
         </Style>
+
+        <!-- Boutons de base -->
+        <Style x:Key="RoundBasicBtn" TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="12"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#FFBBCAD8"/>
+            <!-- Nécessaire pour le hover -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="#FF212F3D"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="BorderThickness" Value="0, 0, 0, 0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ffcadae8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Bouton valider du pseudo -->
+        <Style x:Key="ValidateNicknameBtn" TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="12"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Width" Value="88"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF212F3D"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="BorderThickness" Value="0, 0, 0, 0"/>
+            <Setter Property="BorderBrush" Value="#FF212F3D"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <!-- Nécessaire pour le hover -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ffcadae8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Bouton sélectionné (scores) -->
+        <Style x:Key="SelectedRoundBtn" TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="12"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#FF212F3D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="BorderThickness" Value="0, 0, 0, 0"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <!-- Nécessaire pour le hover -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ffcadae8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Headers du tableau -->
+        <Style x:Key="headersBtn" TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="15, 0, 15, 5"/>
+
+            <!-- Nécessaire pour le hover -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FA8334"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Statistiques affichées pendant le jeu -->
+        <Style x:Key="StatTxtBox" TargetType="{x:Type TextBlock}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
     </Application.Resources>
 </Application>

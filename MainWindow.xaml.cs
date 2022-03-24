@@ -168,6 +168,7 @@ namespace DactyloTest
 
         private void scoreBtn_Click(object sender, RoutedEventArgs e)
         {
+            this._dactylCtrl.StopTimers();
             new ScoresWindow(this._dactylCtrl).Show();
         }
     }

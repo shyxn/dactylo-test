@@ -24,12 +24,19 @@ namespace DactyloTest
             this._dactylCtrl = ctrl;
             InitializeComponent();
         }
+
         public ScoresWindow()
         {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            PrintHeaders();
+            UpdateTable();
+        }
+
+        private void PrintHeaders()
         {
             string[] headers = new string[]
             {
@@ -46,36 +53,39 @@ namespace DactyloTest
             };
 
             this.scoreTable.RowDefinitions.Add(new RowDefinition());
-            
-
 
             for (int i = 0; i < headers.Length; i++)
             {
-                string name = headers[i].Trim();
-
                 this.scoreTable.ColumnDefinitions.Add(new ColumnDefinition()
                 {
                     SharedSizeGroup = headers[i].Replace(" ", ""),
                     Width = GridLength.Auto
                 });
 
-                TextBlock textBlock = new TextBlock
+                Button headerBtn = new Button
                 {
-                    Text = headers[i],
-                    FontFamily = new FontFamily("Poppins"),
-                    Foreground = Brushes.White,
-                    FontSize = 14,
-                    FontWeight = FontWeights.Bold,
-                    TextAlignment = TextAlignment.Center,
-                    Margin = new Thickness(15, 0, 15, 5),
+                    Content = headers[i],
+                    Style = Application.Current.FindResource("headersBtn") as Style,
+                    //FontFamily = new FontFamily("Poppins"),
+                    //Foreground = Brushes.White,
+                    //Background = Brushes.Transparent,
+                    //FontSize = 14,
+                    //FontWeight = FontWeights.Bold,
+                    //HorizontalContentAlignment = HorizontalAlignment.Center,
+                    //BorderThickness = new Thickness(0),
+                    //Margin = new Thickness(15, 0, 15, 5)
                 };
                 Border border = new Border() { BorderBrush = Brushes.White, BorderThickness = new Thickness(0, 0, 0, 1) };
-                border.Child = textBlock;
+                border.Child = headerBtn;
 
                 border.SetValue(Grid.ColumnProperty, i);
-                //textBlock.SetValue(Grid.RowProperty, 0);
                 this.scoreTable.Children.Add(border);
             }
+        }
+
+        public void UpdateTable()
+        {
+            // Obtenir le tableau en fonction des filtres
 
             foreach (HighScore highScore in this._dactylCtrl.GetAllScores())
             {
@@ -83,17 +93,7 @@ namespace DactyloTest
             }
         }
 
-        private void SortScores()
-        {
-            //List<HighScore> allScores = this._dactylCtrl.GetScores();
-
-            // Ordonner par WPM de manière décroissante
-            // List<HighScore> sortedAllScoresallScores = allScores.OrderByDescending(o => o.WPM).ToList();
-
-            // Ordonner par date de manière croissante
-            // List<HighScore> sortedAllScoresallScores = allScores.OrderBy(o => o.Date).ToList();
-
-        }
+        
         private void AddRow(List<string> formattedHighScores)
         {
             this.scoreTable.RowDefinitions.Add(new RowDefinition());
@@ -133,6 +133,10 @@ namespace DactyloTest
                 highScore.Date.ToString("G")
             };
         }
-        
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this._dactylCtrl.StartGame(true);
+        }
     }
 }
