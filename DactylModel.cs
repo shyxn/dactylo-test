@@ -54,5 +54,9 @@ namespace DactyloTest
             }
             _highScores = (List<HighScore>)obj;
         }
+        public string GetTextFromIndex(int index)
+        {
+            return this._texts[index];
+        }
     }
 }

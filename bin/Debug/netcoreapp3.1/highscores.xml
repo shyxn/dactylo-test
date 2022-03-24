@@ -39,4 +39,17 @@
     <TextIndex>2</TextIndex>
     <Date>2022-03-22T14:29:43.1486418+01:00</Date>
   </HighScore>
+  <HighScore>
+    <Score>530</Score>
+    <CPS>4.763975078632098</CPS>
+    <WPM>56</WPM>
+    <Nickname>ta mere</Nickname>
+    <Accuracy>0.9460093896713615</Accuracy>
+    <TotalStrokes>426</TotalStrokes>
+    <CorrectStrokes>403</CorrectStrokes>
+    <IncorrectStrokes>23</IncorrectStrokes>
+    <Time>PT1M24.5932217S</Time>
+    <TextIndex>2</TextIndex>
+    <Date>2022-03-23T14:06:57.6356461+01:00</Date>
+  </HighScore>
 </ArrayOfHighScore>

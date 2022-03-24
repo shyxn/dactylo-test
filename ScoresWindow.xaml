@@ -8,7 +8,15 @@
         Title="Scores - DactyloTest" Height="450" Width="1350" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
 
     <Grid>
-        <FlowDocumentScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="15">
+                <Grid x:Name="scoreTable" ShowGridLines="True">
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <FlowDocumentScrollViewer Background="#212F3D" Margin="0, 300, 0, 0">
             <FlowDocument>
                 <Table TextAlignment="Center" FontFamily="Poppins">
                     <Table.Columns>
@@ -81,7 +89,8 @@
                             <TableCell>
                                 <Paragraph>00:01:12</Paragraph>
                             </TableCell>
-                            <TableCell><!-- Mettre les trois petits points comme sur les textbox-->
+                            <TableCell>
+                                <!-- Mettre les trois petits points comme sur les textbox-->
                                 <Paragraph >"il était une fois.."</Paragraph>
                             </TableCell>
                             <TableCell>

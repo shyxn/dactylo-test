@@ -199,9 +199,13 @@ namespace DactyloTest
             return (double)this.CorrectStrokes / (double)this.KeyStrokes;
         }
 
-        public List<HighScore> GetScores()
+        public List<HighScore> GetAllScores()
         {
             return _dactylModel._highScores;
+        }
+        public string GetTextFromIndex(int index)
+        {
+            return this._dactylModel.GetTextFromIndex(index);
         }
     }
 }
