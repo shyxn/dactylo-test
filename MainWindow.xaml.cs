@@ -21,11 +21,12 @@ namespace DactyloTest
         /// Contrôleur 
         /// </summary>
         private DactylCtrl _dactylCtrl;
+        private DactylModel _dactylModel;
         public MainWindow()
         {
             // Définir le pattern MVC
-            DactylModel dactylModel = new DactylModel();
-            this._dactylCtrl = new DactylCtrl(this, dactylModel);
+            this._dactylModel = new DactylModel();
+            this._dactylCtrl = new DactylCtrl(this, this._dactylModel);
 
             InitializeComponent();
 
@@ -169,7 +170,7 @@ namespace DactyloTest
         private void scoreBtn_Click(object sender, RoutedEventArgs e)
         {
             this._dactylCtrl.StopTimers();
-            new ScoresWindow(this._dactylCtrl).Show();
+            new ScoresWindow(this._dactylCtrl, this._dactylModel).Show();
         }
     }
 }

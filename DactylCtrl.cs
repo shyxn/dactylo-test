@@ -10,7 +10,6 @@ namespace DactyloTest
     {
         private DactylModel _dactylModel;
         private MainWindow _mainWindow;
-        private string _playerNickname;
 
         private int _inputIndex;
         private DateTime _gameStartTime;
@@ -19,6 +18,7 @@ namespace DactyloTest
         public int CorrectStrokes { get; set; } = 0;
         public int IncorrectStrokes { get; set; } = 0;
         public string InputText { get; set; }
+        public string PlayerNickname { get; set; }
 
         private string _currentText;
         private System.Windows.Threading.DispatcherTimer _gameTickTimer = new System.Windows.Threading.DispatcherTimer();
@@ -108,7 +108,7 @@ namespace DactyloTest
         }
         public void SetNickname(string nickname)
         {
-            this._playerNickname = nickname;
+            this.PlayerNickname = nickname;
         }
         public void CheckChar(char newChar)
         {
@@ -149,7 +149,7 @@ namespace DactyloTest
             var score = new HighScore()
             {
                 Accuracy = this.CalculateAccuracy(),
-                Nickname = this._playerNickname,
+                Nickname = this.PlayerNickname,
                 CorrectStrokes = this.CorrectStrokes,
                 IncorrectStrokes = this.IncorrectStrokes,
                 Time = this.TotalTime,
@@ -160,7 +160,7 @@ namespace DactyloTest
             };
             score.CalculateScore();
             score.CalculateSpeed();
-            if (!string.IsNullOrEmpty(this._playerNickname))
+            if (!string.IsNullOrEmpty(this.PlayerNickname))
             {
                 this._dactylModel.SaveHighScore(score);
             }
@@ -197,7 +197,6 @@ namespace DactyloTest
         {
             return (double)this.CorrectStrokes / (double)this.KeyStrokes;
         }
-
         public List<HighScore> GetAllScores()
         {
             return _dactylModel._highScores;

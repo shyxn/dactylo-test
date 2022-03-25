@@ -65,4 +65,43 @@
     <TextIndex>1</TextIndex>
     <Date>2022-03-24T11:57:47.3521024+01:00</Date>
   </HighScore>
+  <HighScore>
+    <Score>965</Score>
+    <CPS>8.508129054725504</CPS>
+    <WPM>101</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9553398058252427</Accuracy>
+    <TotalStrokes>515</TotalStrokes>
+    <CorrectStrokes>492</CorrectStrokes>
+    <IncorrectStrokes>23</IncorrectStrokes>
+    <Time>PT57.8270495S</Time>
+    <TextIndex>1</TextIndex>
+    <Date>2022-03-25T10:30:30.659511+01:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>936</Score>
+    <CPS>8.287110234241954</CPS>
+    <WPM>99</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9456066945606695</Accuracy>
+    <TotalStrokes>478</TotalStrokes>
+    <CorrectStrokes>452</CorrectStrokes>
+    <IncorrectStrokes>26</IncorrectStrokes>
+    <Time>PT54.542535S</Time>
+    <TextIndex>0</TextIndex>
+    <Date>2022-03-25T10:31:29.655259+01:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>904</Score>
+    <CPS>8.304303456343208</CPS>
+    <WPM>98</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9221967963386728</Accuracy>
+    <TotalStrokes>437</TotalStrokes>
+    <CorrectStrokes>403</CorrectStrokes>
+    <IncorrectStrokes>34</IncorrectStrokes>
+    <Time>PT48.5290551S</Time>
+    <TextIndex>2</TextIndex>
+    <Date>2022-03-25T10:32:23.2826119+01:00</Date>
+  </HighScore>
 </ArrayOfHighScore>

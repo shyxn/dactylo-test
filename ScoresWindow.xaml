@@ -7,15 +7,16 @@
         mc:Ignorable="d"
         Title="Scores - DactyloTest" Height="450" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D">
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="15">
-                <Canvas x:Name="Titles" Height="124">
-                    <TextBlock FontFamily="Poppins" FontSize="40" Foreground="White" Canvas.Top="10" Margin="15,0,0,0" FontWeight="Bold">Tableau des scores</TextBlock>
-                    <Button x:Name="OnlyMyScores" Canvas.Left="131" Canvas.Top="79"  Style="{StaticResource RoundBasicBtn}" Width="222" Height="35">Seulement mes scores</Button>
-                    <Button x:Name="AllScores" Width="92" Content="Tous" Canvas.Top="79" Canvas.Left="15" Height="35" Style="{StaticResource RoundBasicBtn}"/>
+                <Canvas x:Name="Titles" Height="138">
+                    <TextBlock FontFamily="Poppins" FontSize="40" Foreground="White" Margin="15,0,0,0" FontWeight="Bold">Tableau des scores</TextBlock>
+                    <Button x:Name="OnlyMyScores" Click="FilterBtn_Click" Canvas.Left="131" Canvas.Top="79"  Style="{StaticResource RoundBasicBtn}" Width="128" Height="35">Mes scores</Button>
+                    <Button x:Name="AllScores" Click="FilterBtn_Click" Width="92" Content="Tous" Canvas.Top="79" Canvas.Left="15" Height="35" Style="{StaticResource SelectedRoundBtn}"/>
                 </Canvas>
-
-                <Grid x:Name="scoreTable"/>
+                <Grid x:Name="scoreTable">
+                    
+                </Grid>
             </StackPanel>
         </ScrollViewer>
     </Grid>

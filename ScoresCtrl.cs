@@ -2,36 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
 
 namespace DactyloTest
 {
     public class ScoresCtrl
     {
         private DactylModel _dactylModel;
-        public string filterMode = "All"; // ou "OnlyCurrentNickname
-
+        public string BtnFilterMode { get; set; } = "AllScores"; // ou "OnlyMyScores"
+        public string HeaderFilterMode { get; set; } = null; // Ou "Ascending" ou "Descending"
+        public string HeaderFilterName { get; set; } = "Score";
+        public Button PreviousBtn { get; set; }
         public ScoresCtrl(DactylModel dactylModel)
         {
             this._dactylModel = dactylModel;
         }
-        private List<HighScore> SortScores(string filter, string mode = "Descending")
+        public List<HighScore> GetSortedScores()
         {
             List<HighScore> allScores = this._dactylModel._highScores;
-            string[] headers = new string[]
-            {
-                "Pseudonyme",
-                "Score",
-                "CPS",
-                "WPM",
-                "Précision",
-                "Frappes totales",
-                "incorrectes",
-                "Temps total",
-                "Texte tapé",
-                "Date enregistrée"
-            };
+            //string[] headers = new string[]
+            //{
+            //    "Pseudonyme",
+            //    "Score",
+            //    "CPS",
+            //    "WPM",
+            //    "Précision",
+            //    "Frappes totales",
+            //    "incorrectes",
+            //    "Temps total",
+            //    "Texte tapé",
+            //    "Date enregistrée"
+            //};
             Func<HighScore, object> HighScoreProprety = null;
-            switch (filter)
+            switch (this.HeaderFilterName)
             {
                 case "Pseudonyme":
                     HighScoreProprety = o => o.Nickname;
@@ -63,14 +66,16 @@ namespace DactyloTest
                 case "Date enregistrée":
                     HighScoreProprety = o => o.Date;
                     break;
+                default:
+                    return allScores;
             }
 
-            if (mode == "Descending")
+            if (this.HeaderFilterMode == "Descending")
                 return allScores.OrderByDescending(HighScoreProprety).ToList();
-            else if (mode == "Ascending")
+            else if (this.HeaderFilterMode == "Ascending")
                 return allScores.OrderBy(HighScoreProprety).ToList();
             else
-                return null;
+                return allScores;
         }
     }
 }

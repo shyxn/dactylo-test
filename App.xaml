@@ -84,17 +84,18 @@
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="BorderThickness" Value="2, 2, 2, 2"/>
+                    <Setter Property="BorderBrush" Value="#FA8334"/>
                 </Style>
             </Style.Resources>
             <Setter Property="Height" Value="45"/>
             <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Background" Value="#FF212F3D"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="#FA8334"/>
             <Setter Property="Focusable" Value="False"/>
-            <Setter Property="BorderThickness" Value="0, 0, 0, 0"/>
-            <Setter Property="BorderBrush" Value="White"/>
-            <!-- Nécessaire pour le hover -->
+            
+             <!--Nécessaire pour le hover--> 
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -106,12 +107,20 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#ffcadae8"/>
+                    <Setter Property="Background" Value="Transparent"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
         
-        <!-- Headers du tableau -->
+        <!-- Statistiques affichées pendant le jeu -->
+        <Style x:Key="StatTxtBox" TargetType="{x:Type TextBlock}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+        <!-- Header du tableau -->
         <Style x:Key="headersBtn" TargetType="{x:Type Button}">
             <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
             <Setter Property="Foreground" Value="White"/>
@@ -139,14 +148,57 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
-        <!-- Statistiques affichées pendant le jeu -->
-        <Style x:Key="StatTxtBox" TargetType="{x:Type TextBlock}">
-            <Setter Property="Height" Value="30"/>
+
+        <!-- Header sélectionné du tableau -->
+        <Style x:Key="selectedHeadersBtn" TargetType="{x:Type Button}">
             <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="#FA8334"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="15, 0, 15, 5"/>
+
+            <!-- Nécessaire pour le hover -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
+
+        <!-- Cases du tableau -->
+        <Style x:Key="tableDataCell" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="MaxWidth" Value="200"/>
+            <Setter Property="Margin" Value="15, 10, 15, 5"/>
+        </Style>
+
+        <!-- Cases sélectionnées (triées) du tableau -->
+        <Style x:Key="selectedTableDataCell" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#A36138"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="MaxWidth" Value="200"/>
+            <Setter Property="Margin" Value="15, 10, 15, 5"/>
+        </Style>
+
 
     </Application.Resources>
 </Application>
