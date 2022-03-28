@@ -104,4 +104,30 @@
     <TextIndex>2</TextIndex>
     <Date>2022-03-25T10:32:23.2826119+01:00</Date>
   </HighScore>
+  <HighScore>
+    <Score>688</Score>
+    <CPS>6.462021687548562</CPS>
+    <WPM>76</WPM>
+    <Nickname>Risa</Nickname>
+    <Accuracy>0.9056179775280899</Accuracy>
+    <TotalStrokes>445</TotalStrokes>
+    <CorrectStrokes>403</CorrectStrokes>
+    <IncorrectStrokes>42</IncorrectStrokes>
+    <Time>PT1M2.3643837S</Time>
+    <TextIndex>2</TextIndex>
+    <Date>2022-03-28T15:03:18.2646136+02:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>699</Score>
+    <CPS>6.468277096841666</CPS>
+    <WPM>77</WPM>
+    <Nickname>Risa</Nickname>
+    <Accuracy>0.9077490774907749</Accuracy>
+    <TotalStrokes>542</TotalStrokes>
+    <CorrectStrokes>492</CorrectStrokes>
+    <IncorrectStrokes>50</IncorrectStrokes>
+    <Time>PT1M16.0635317S</Time>
+    <TextIndex>1</TextIndex>
+    <Date>2022-03-28T15:06:05.4959409+02:00</Date>
+  </HighScore>
 </ArrayOfHighScore>

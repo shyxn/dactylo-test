@@ -5,17 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DactyloTest"
         mc:Ignorable="d"
-        Title="Scores - DactyloTest" Height="450" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D">
+        Title="Scores - DactyloTest" Height="641" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="15">
                 <Canvas x:Name="Titles" Height="138">
+                    <Button x:Name="ChangeNickname" Canvas.Left="281" Canvas.Top="84" Focusable="False">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Image Source="/icons8-utilisateur-48.png" Height="24" Width="28" Canvas.Left="7" Canvas.Top="9"/>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Label x:Name="nickname" Canvas.Left="309" Canvas.Top="84" Width="172" Height="24" FontFamily="Poppins" Foreground="White" FontSize="11" Padding="0,4,0,0" Content=""/>
                     <TextBlock FontFamily="Poppins" FontSize="40" Foreground="White" Margin="15,0,0,0" FontWeight="Bold">Tableau des scores</TextBlock>
                     <Button x:Name="OnlyMyScores" Click="FilterBtn_Click" Canvas.Left="131" Canvas.Top="79"  Style="{StaticResource RoundBasicBtn}" Width="128" Height="35">Mes scores</Button>
                     <Button x:Name="AllScores" Click="FilterBtn_Click" Width="92" Content="Tous" Canvas.Top="79" Canvas.Left="15" Height="35" Style="{StaticResource SelectedRoundBtn}"/>
                 </Canvas>
                 <Grid x:Name="scoreTable">
-                    
+
                 </Grid>
             </StackPanel>
         </ScrollViewer>

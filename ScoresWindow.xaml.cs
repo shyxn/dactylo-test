@@ -22,6 +22,8 @@ namespace DactyloTest
         private DactylCtrl _dactylCtrl;
         private ScoresCtrl _scoresCtrl;
         private Button[] filterButtons;
+        private int _selectedColumn = -1;
+        private int _hoveredRow = -1;
         public ScoresWindow(DactylCtrl ctrl, DactylModel dactylModel)
         {
             this._dactylCtrl = ctrl;
@@ -36,6 +38,7 @@ namespace DactyloTest
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.nickname.Content = this._dactylCtrl.PlayerNickname;
             this.filterButtons = new Button[]
             {
                 this.OnlyMyScores,
@@ -124,18 +127,48 @@ namespace DactyloTest
         private void AddRow(List<string> formattedHighScores)
         {
             this.scoreTable.RowDefinitions.Add(new RowDefinition());
-
             for (int i = 0; i < formattedHighScores.Count; i++)
             {
+                // Si la colonne est sélectionnée
+                string style;
+                bool IsRowHovered = this.scoreTable.RowDefinitions.Count - 1 == this._hoveredRow;
+                bool IsColumnSelected = i == this._selectedColumn;
+                if (IsRowHovered && IsColumnSelected)
+                {
+                    style = "hoveredAndSelectedTableDataCell";
+                }
+                else if (IsRowHovered)
+                {
+                    style = "hoveredTableDataCell";
+                }
+                else if (IsColumnSelected)
+                // Si la ligne est touchée par le curseur 
+                {
+                    style = "selectedTableDataCell";
+                }
+                // Cell normale
+                else
+                {
+                    style = "tableDataCell";
+                }
+
                 TextBlock textBlock = new TextBlock
                 {
                     Text = formattedHighScores[i],
-                    Style = Application.Current.FindResource("tableDataCell") as Style
+                    Style = Application.Current.FindResource(style) as Style
                 };
                 textBlock.SetValue(Grid.ColumnProperty, i);
                 textBlock.SetValue(Grid.RowProperty, this.scoreTable.RowDefinitions.Count - 1);
+                textBlock.MouseEnter += TextBlock_MouseEnter;
                 this.scoreTable.Children.Add(textBlock);
             }
+        }
+
+        private void TextBlock_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TextBlock hoveredBlock = (TextBlock)sender;
+            this._hoveredRow = Grid.GetRow(hoveredBlock);
+            UpdateTable();
         }
 
         private List<string> FormatHighScoreData(HighScore highScore)
@@ -163,10 +196,10 @@ namespace DactyloTest
         private void HeaderBtn_Click(object sender, RoutedEventArgs e)
         {
             Button clickedBtn = (Button)sender;
-
             string filterMode = "";
             string sortIcon = "";
             string filterName = "";
+            this._selectedColumn = Grid.GetColumn((Border)clickedBtn.Parent);
 
             // Si c'est le même qu'avant
             if (clickedBtn == this._scoresCtrl.PreviousBtn || this._scoresCtrl.HeaderFilterMode == null)
@@ -189,9 +222,15 @@ namespace DactyloTest
                         sortIcon = " ⮝";
                         break;
                 }
-                clickedBtn.Style = filterMode == null
-                    ? Application.Current.FindResource("headersBtn") as Style
-                    : Application.Current.FindResource("selectedHeadersBtn") as Style;
+                if (filterMode == null)
+                {
+                    clickedBtn.Style = Application.Current.FindResource("headersBtn") as Style;
+                    this._selectedColumn = -1;
+                }
+                else
+                {
+                    clickedBtn.Style = Application.Current.FindResource("selectedHeadersBtn") as Style;
+                }
             }
             // Si c'est pas le même 
             else
@@ -200,6 +239,7 @@ namespace DactyloTest
                 filterMode = "Descending";
                 filterName = clickedBtn.Content.ToString();
                 sortIcon = " ⮟";
+
                 // le bouton précédent a son nom originel
                 this._scoresCtrl.PreviousBtn.Content = this._scoresCtrl.HeaderFilterName;
 
@@ -216,30 +256,10 @@ namespace DactyloTest
         }
         private void StyleSelectionColumn(Button header, string style)
         {
-            if (style == "selected")
-            {
-                header.Style = Application.Current.FindResource("selectedHeadersBtn") as Style;
-                // POUR TOUTES LES COLONNES QUI FONT PARTIE DU MÊME INDEX COLUMNPROPRETY DE GRID
-                // appliquer le style correspondant
+            this._selectedColumn = Grid.GetColumn((Border)header.Parent);
+            // ATTENTION GERER CA ENSUITE DANS UPDATETABLE, PAS ICI .
 
-                for (int i = 0 ; i < this.scoreTable.Children.Count - 1; i--)
-                {
-                    if (!(Grid.GetColumn(this.scoreTable.Children[i].) == 0))
-                    {
-                        this.scoreTable.Children.Remove(this.scoreTable.Children[i]);
-                    }
-                }
-            }
-            if (style == "normal")
-            {
-                header.Style = Application.Current.FindResource("headersBtn") as Style;
-                // POUR TOUTES LES COLONNES QUI FONT PARTIE DU MÊME INDEX COLUMNPROPRETY DE GRID
-                // appliquer le style correspondant
-                foreach (var item in collection)
-                {
-
-                }
-            }
+            Debug.WriteLine("La colonne est la " + this._selectedColumn);
         }
 
         private void FilterBtn_Click(object sender, RoutedEventArgs e)

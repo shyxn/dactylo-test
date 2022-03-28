@@ -21,7 +21,7 @@
                     <TextBlock x:Name="rightSideText" FontFamily="{StaticResource Source Code Pro}" Width="220" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" FontSize="22" Height="33" FontWeight="DemiBold" Foreground="White"/>
                 </StackPanel>
             </Border>
-            
+
             <!-- Panneau des statistiques -->
             <Border BorderThickness="1, 0, 0, 1" BorderBrush="White" Background="Transparent" Width="276" Canvas.Left="82" Canvas.Top="146">
                 <StackPanel Margin="10,0,0,0">
@@ -34,7 +34,7 @@
                 </StackPanel>
             </Border>
 
-            <Button x:Name="quitBtn" Click="quitBtn_Click" Width="87" Canvas.Left="483" Canvas.Top="259" Style="{StaticResource RoundBasicBtn}" >Quitter</Button>
+            <Button x:Name="quitBtn" Click="quitBtn_Click" Width="85" Canvas.Left="483" Canvas.Top="269" Style="{StaticResource RoundBasicBtn}" Height="44" >Quitter</Button>
             <Button x:Name="restartBtn" Click="restartBtn_Click" Width="149" Canvas.Left="483" Canvas.Top="209" Style="{StaticResource RoundBasicBtn}">Recommencer</Button>
             <Button x:Name="scoreBtn" Click="scoreBtn_Click" Width="114" Height="28" FontSize="13" Canvas.Left="14" Canvas.Top="46" Style="{StaticResource RoundBasicBtn}">Voir les scores</Button>
             <Button x:Name="anotherTextBtn" Click="anotherTextBtn_Click" Style="{StaticResource RoundBasicBtn}" Width="207" Canvas.Left="483" Canvas.Top="159">Générer un autre texte</Button>

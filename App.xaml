@@ -75,6 +75,7 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#ffcadae8"/>
+                    <Setter Property="Foreground" Value="#FF212F3D"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -158,6 +159,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15, 0, 15, 5"/>
             <Setter Property="Margin" Value="15, 0, 15, 5"/>
 
             <!-- Nécessaire pour le hover -->
@@ -185,20 +187,38 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="MaxWidth" Value="200"/>
-            <Setter Property="Margin" Value="15, 10, 15, 5"/>
+            <Setter Property="Padding" Value="15, 10, 15, 5"/>
         </Style>
 
         <!-- Cases sélectionnées (triées) du tableau -->
         <Style x:Key="selectedTableDataCell" TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#A36138"/>
+            <Setter Property="Foreground" Value="#FDE8D8"/>
+            <Setter Property="Background" Value="#35373C"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="MaxWidth" Value="200"/>
-            <Setter Property="Margin" Value="15, 10, 15, 5"/>
+            <Setter Property="Padding" Value="15, 10, 15, 5"/>
         </Style>
-
-
+        <!-- Cases survolées du tableau pour la ligne entière -->
+        <Style x:Key="hoveredTableDataCell" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#374553"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="MaxWidth" Value="200"/>
+            <Setter Property="Padding" Value="15, 10, 15, 5"/>
+        </Style>
+        <!-- Cases survolées ET sélectionnée du tableau -->
+        <Style x:Key="hoveredAndSelectedTableDataCell" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="Foreground" Value="#FEF4EC"/>
+            <Setter Property="Background" Value="#363E48"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="MaxWidth" Value="200"/>
+            <Setter Property="Padding" Value="15, 10, 15, 5"/>
+        </Style>
     </Application.Resources>
 </Application>
