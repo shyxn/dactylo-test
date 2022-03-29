@@ -19,7 +19,7 @@ namespace DactyloTest
         }
         public List<HighScore> GetSortedScores()
         {
-            List<HighScore> allScores = this._dactylModel._highScores;
+            List<HighScore> allScores = this._dactylModel.HighScores;
             //string[] headers = new string[]
             //{
             //    "Pseudonyme",

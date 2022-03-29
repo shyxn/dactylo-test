@@ -21,12 +21,14 @@ namespace DactyloTest
     {
         private DactylCtrl _dactylCtrl;
         private ScoresCtrl _scoresCtrl;
+        private DactylModel _dactylModel;
         private Button[] filterButtons;
         private int _selectedColumn = -1;
         private int _hoveredRow = -1;
         public ScoresWindow(DactylCtrl ctrl, DactylModel dactylModel)
         {
             this._dactylCtrl = ctrl;
+            this._dactylModel = dactylModel;
             this._scoresCtrl = new ScoresCtrl(dactylModel);
             InitializeComponent();
         }
@@ -79,6 +81,18 @@ namespace DactyloTest
                     Content = headers[i],
                     Style = Application.Current.FindResource("headersBtn") as Style
                 };
+
+                if (!(GetToolTipString(headers[i]) is null))
+                {
+                    ToolTip headerToolTip = new ToolTip()
+                    {
+                        Content = GetToolTipString(headers[i]),
+                        HasDropShadow = true
+                    };
+                    headerToolTip.FontFamily = Application.Current.FindResource("Poppins") as FontFamily;
+                    headerBtn.ToolTip = headerToolTip;
+                }
+
                 headerBtn.Click += HeaderBtn_Click;
                 Border border = new Border() { BorderBrush = Brushes.White, BorderThickness = new Thickness(0, 0, 0, 1) };
                 border.Child = headerBtn;
@@ -86,6 +100,27 @@ namespace DactyloTest
                 border.SetValue(Grid.ColumnProperty, i);
                 this.scoreTable.Children.Add(border);
             }
+        }
+
+        public string GetToolTipString(string header)
+        {
+            string toolTipString;
+            switch (header)
+            {
+                case "Score":
+                    toolTipString = "WPM x Précision facteur 10";
+                    break;
+                case "CPS":
+                    toolTipString = "CPS (Chars Per Second)\rCaractères corrects entrés par seconde en moyenne";
+                    break;
+                case "WPM":
+                    toolTipString = "WPM (Words Per Minute)\rUnité de mesure universelle de la vitesse de frappe\rUn mot = 5 caractères en moyenne";
+                    break;
+                default:
+                    toolTipString = null;
+                    break;
+            }
+            return toolTipString;
         }
 
         public void UpdateTable()
@@ -160,8 +195,15 @@ namespace DactyloTest
                 textBlock.SetValue(Grid.ColumnProperty, i);
                 textBlock.SetValue(Grid.RowProperty, this.scoreTable.RowDefinitions.Count - 1);
                 textBlock.MouseEnter += TextBlock_MouseEnter;
+                textBlock.MouseLeave += TextBlock_MouseLeave;
                 this.scoreTable.Children.Add(textBlock);
             }
+        }
+
+        private void TextBlock_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this._hoveredRow = -1;
+            UpdateTable();
         }
 
         private void TextBlock_MouseEnter(object sender, MouseEventArgs e)
@@ -273,6 +315,23 @@ namespace DactyloTest
 
             this._scoresCtrl.BtnFilterMode = clickedBtn.Name;
             this.UpdateTable();
+        }
+
+        private void QuitScores_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ShowGraph_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new Window
+            {
+                Height = 300,
+                Width = 500,
+                Title = "Graphique",
+                Content = new Graph(this._dactylModel)
+            };
+            window.ShowDialog();
         }
     }
 }

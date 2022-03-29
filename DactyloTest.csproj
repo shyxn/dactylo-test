@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="icons8-utilisateur-48.png" />
     <Resource Include="Resources\Poppins-Black.ttf" />
     <Resource Include="Resources\Poppins-BlackItalic.ttf" />

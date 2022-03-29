@@ -130,4 +130,30 @@
     <TextIndex>1</TextIndex>
     <Date>2022-03-28T15:06:05.4959409+02:00</Date>
   </HighScore>
+  <HighScore>
+    <Score>1000</Score>
+    <CPS>8.784946219049722</CPS>
+    <WPM>104</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9618138424821002</Accuracy>
+    <TotalStrokes>419</TotalStrokes>
+    <CorrectStrokes>403</CorrectStrokes>
+    <IncorrectStrokes>16</IncorrectStrokes>
+    <Time>PT45.8739291S</Time>
+    <TextIndex>2</TextIndex>
+    <Date>2022-03-29T08:22:18.9027368+02:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>1018</Score>
+    <CPS>8.838835528004463</CPS>
+    <WPM>105</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9699570815450643</Accuracy>
+    <TotalStrokes>466</TotalStrokes>
+    <CorrectStrokes>452</CorrectStrokes>
+    <IncorrectStrokes>14</IncorrectStrokes>
+    <Time>PT51.137958S</Time>
+    <TextIndex>0</TextIndex>
+    <Date>2022-03-29T08:24:50.7448161+02:00</Date>
+  </HighScore>
 </ArrayOfHighScore>

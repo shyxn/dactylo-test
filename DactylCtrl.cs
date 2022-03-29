@@ -108,7 +108,7 @@ namespace DactyloTest
         }
         public void SetNickname(string nickname)
         {
-            this.PlayerNickname = nickname;
+            this.PlayerNickname = nickname.Trim();
         }
         public void CheckChar(char newChar)
         {
@@ -199,7 +199,7 @@ namespace DactyloTest
         }
         public List<HighScore> GetAllScores()
         {
-            return _dactylModel._highScores;
+            return _dactylModel.HighScores;
         }
         public string GetTextFromIndex(int index)
         {
