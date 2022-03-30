@@ -324,14 +324,8 @@ namespace DactyloTest
 
         private void ShowGraph_Click(object sender, RoutedEventArgs e)
         {
-            Window window = new Window
-            {
-                Height = 300,
-                Width = 500,
-                Title = "Graphique",
-                Content = new Graph(this._dactylModel)
-            };
-            window.ShowDialog();
+            this.scoreTable.Visibility = Visibility.Hidden;
+            this.ScoreGraph.Visibility = Visibility.Visible;
         }
     }
 }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DactyloTest"
+        xmlns:control = "clr-namespace:DactyloTest" 
         mc:Ignorable="d"
         Title="Scores - DactyloTest" Height="641" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D">
     <Grid>
@@ -24,6 +25,7 @@
                     <Button x:Name="QuitScores" Click="QuitScores_Click" Width="150" Content="Revenir au jeu" Canvas.Top="12" Canvas.Left="1057" Height="36" Style="{StaticResource RoundBasicBtn}"/>
                     <Button x:Name="ShowGraph" Click="ShowGraph_Click" Width="208" Content="Afficher le graphique" Canvas.Top="84" Canvas.Left="999" Height="36" Style="{StaticResource RoundBasicBtn}"/>
                 </Canvas>
+                <control:Graph x:Name="ScoreGraph" Visibility="Hidden"/>
                 <Grid x:Name="scoreTable">
                 </Grid>
             </StackPanel>

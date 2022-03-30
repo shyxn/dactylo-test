@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:local="clr-namespace:DactyloTest"
-             mc:Ignorable="d" d:DataContext="{d:DesignInstance  local:Graph}" Height="274" Width="494">
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance  local:Graph}" Height="300" Width="500">
     <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Bottom">
+        <lvc:CartesianChart x:Name="MainGraph" Series="{Binding SeriesCollection}" LegendLocation="Bottom">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="Unité" LabelFormatter="{Binding UnitOnX}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Pseudonyme" Labels="{Binding LabelsOnY}"></lvc:Axis>
+                <lvc:Axis Labels="{Binding LabelsOnY}"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
             <lvc:CartesianChart.DataTooltip>
                 <lvc:DefaultTooltip SelectionMode="SharedYValues"></lvc:DefaultTooltip>

@@ -25,19 +25,73 @@ namespace DactyloTest
     {
         public SeriesCollection SeriesCollection { get; set; }
         public string[] LabelsOnY { get; set; }
-        public Func<double, string> UnitOnX { get; set; }
         private DactylModel _dactylModel;
-        public Graph(DactylModel dactylModel)
-        {
-            this._dactylModel = dactylModel;
 
+        private Dictionary<string, Dictionary<string, double>> _allMeans;
+
+        public Graph()
+        {
             InitializeComponent();
+            InitializeTable();
+        }
+        public void ShowRow(string unitName)
+        {
+            Dictionary<string, double> dataCollection = this._allMeans[unitName];
+
+            // Formattage
+            Func<double, string> UnitOnX = null;
+            switch (unitName)
+            {
+                case "Score":
+                    UnitOnX = x => string.Format("{0:0.##}", x);
+                    break;
+                case "CPS":
+                    UnitOnX = x => string.Format("{0:0.00}", x);
+                    break;
+                case "WPM":
+                    UnitOnX = x => string.Format("{0:0.##}", x);
+                    break;
+                case "Accuracy":
+                    UnitOnX = x => string.Format("{0} %", x * 100);
+                    break;
+            }
+
+            // Ajouter l'axe X correspondant
+            this.MainGraph.AxisX.Add(new Axis()
+            {
+                Foreground = Brushes.White,
+                Title = unitName,
+                LabelFormatter = UnitOnX
+            });
+        }
+        public void HideRow(string unitName)
+        {
+            // Supprimer l'axe correspondant
+            foreach (Axis axis in this.MainGraph.AxisX)
+            {
+                if (axis.Title == unitName)
+                {
+                    this.MainGraph.AxisX.Remove(axis);
+                    break;
+                }
+            }
+            // Supprimer la série de données correspondantes
+            foreach (RowSeries row in this.SeriesCollection)
+            {
+                if (row.Title == unitName)
+                {
+                    this.SeriesCollection.Remove(row);
+                }
+            }
+        }
+        private void InitializeTable()
+        {
+            this._dactylModel = new DactylModel();
 
             // tableau avec toutes les unités
+            _allMeans = this._dactylModel.GetEveryonesMeans();
 
-            Dictionary<string, Dictionary<string, double>> allMeans = this._dactylModel.GetEveryonesMeans();
-
-            IEnumerable<double> scoreValues = allMeans["Score"].Values;
+            IEnumerable<double> scoreValues = _allMeans["Score"].Values;
 
             SeriesCollection = new SeriesCollection
             {
@@ -45,7 +99,7 @@ namespace DactyloTest
                 {
                     Title = "Scores",
                     Values = scoreValues.AsChartValues(),
-                    
+                    Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FA8334"))
                 }
             };
 
@@ -56,11 +110,13 @@ namespace DactyloTest
             //    Values = new ChartValues<double> {  }
             //});
 
+            // Nombre de séries existantes
+            SeriesCollection.Count();
             // also adding values updates and animates the chart automatically
             //SeriesCollection[1].Values.Add(48d);
 
-            LabelsOnY = allMeans["Score"].Keys.ToArray();
-            UnitOnX = value => value.ToString("N");
+            LabelsOnY = _allMeans["Score"].Keys.ToArray();
+
 
             DataContext = this;
         }
