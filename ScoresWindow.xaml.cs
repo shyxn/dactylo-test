@@ -296,13 +296,6 @@ namespace DactyloTest
             this._scoresCtrl.PreviousBtn = clickedBtn;
             UpdateTable();
         }
-        private void StyleSelectionColumn(Button header, string style)
-        {
-            this._selectedColumn = Grid.GetColumn((Border)header.Parent);
-            // ATTENTION GERER CA ENSUITE DANS UPDATETABLE, PAS ICI .
-
-            Debug.WriteLine("La colonne est la " + this._selectedColumn);
-        }
 
         private void FilterBtn_Click(object sender, RoutedEventArgs e)
         {

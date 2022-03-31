@@ -80,25 +80,25 @@ namespace DactyloTest
             {
                 Dictionary<string, double> unitMeans = new Dictionary<string, double>();
 
-                Func<HighScore, double> essai = x => x.Score;
+                Func<HighScore, double> selector = x => x.Score;
                 switch (unit)
                 {
                     case "Score":
-                        essai = x => x.Score;
+                        selector = x => x.Score;
                         break;
                     case "CPS":
-                        essai = x => x.CPS;
+                        selector = x => x.CPS;
                         break;
                     case "WPM":
-                        essai = x => x.WPM;
+                        selector = x => x.WPM;
                         break;
                     case "Accuracy":
-                        essai = x => x.Accuracy;
+                        selector = x => x.Accuracy;
                         break;
                 }
                 foreach (string nickname in nicknames)
                 {
-                    double mean = this.HighScores.Where(x => x.Nickname == nickname).Average(essai);
+                    double mean = this.HighScores.Where(x => x.Nickname == nickname).Average(selector);
                     unitMeans.Add(nickname, mean);
                 }
                 allMeans.Add(unit, unitMeans.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value));
