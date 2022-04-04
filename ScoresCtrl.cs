@@ -9,6 +9,8 @@ namespace DactyloTest
     public class ScoresCtrl
     {
         private DactylModel _dactylModel;
+
+        // TODO : À remplacer par un enum
         public string BtnFilterMode { get; set; } = "AllScores"; // ou "OnlyMyScores"
         public string HeaderFilterMode { get; set; } = null; // Ou "Ascending" ou "Descending"
         public string HeaderFilterName { get; set; } = "Score";

@@ -1,32 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfHighScore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="HighScores.Scores">
   <HighScore>
-    <Score>877</Score>
-    <CPS>7.66900170007305</CPS>
-    <WPM>91</WPM>
-    <Nickname>Shyxn</Nickname>
-    <Accuracy>0.9641148325358851</Accuracy>
-    <TotalStrokes>418</TotalStrokes>
-    <CorrectStrokes>403</CorrectStrokes>
-    <IncorrectStrokes>15</IncorrectStrokes>
-    <Time>PT52.5492125S</Time>
-    <TextIndex>2</TextIndex>
-    <Date>0001-01-01T00:00:00</Date>
-  </HighScore>
-  <HighScore>
-    <Score>1000</Score>
-    <CPS>8.87237670845154</CPS>
-    <WPM>105</WPM>
-    <Nickname>Shyxn</Nickname>
-    <Accuracy>0.9527186761229315</Accuracy>
-    <TotalStrokes>423</TotalStrokes>
-    <CorrectStrokes>403</CorrectStrokes>
-    <IncorrectStrokes>20</IncorrectStrokes>
-    <Time>PT45.4218766S</Time>
-    <TextIndex>2</TextIndex>
-    <Date>0001-01-01T00:00:00</Date>
-  </HighScore>
-  <HighScore>
     <Score>881</Score>
     <CPS>7.902431722759509</CPS>
     <WPM>94</WPM>
@@ -155,5 +129,18 @@
     <Time>PT51.137958S</Time>
     <TextIndex>0</TextIndex>
     <Date>2022-03-29T08:24:50.7448161+02:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>1140</Score>
+    <CPS>9.788724517852064</CPS>
+    <WPM>116</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9829268292682927</Accuracy>
+    <TotalStrokes>410</TotalStrokes>
+    <CorrectStrokes>403</CorrectStrokes>
+    <IncorrectStrokes>7</IncorrectStrokes>
+    <Time>PT41.1698173S</Time>
+    <TextIndex>2</TextIndex>
+    <Date>2022-04-04T16:21:53.7627908+02:00</Date>
   </HighScore>
 </ArrayOfHighScore>

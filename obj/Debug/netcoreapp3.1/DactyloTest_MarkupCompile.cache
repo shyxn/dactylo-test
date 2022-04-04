@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\pe41qrd\Desktop\dactylo-test\App.xaml
-31189854045
+4-1156690207
 
-91820549258
+10-1475050419
 195-1305537842
-Graph.xaml;MainWindow.xaml;ScoresWindow.xaml;
+GeneralGraph.xaml;IndividualGraph.xaml;MainWindow.xaml;ScoresWindow.xaml;
 
 False
 

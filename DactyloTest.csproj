@@ -65,4 +65,8 @@
     <Resource Include="Resources\SourceCodePro-SemiBoldItalic.ttf" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="View\" />
+  </ItemGroup>
+
 </Project>

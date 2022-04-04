@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DactyloTest"
-        xmlns:control = "clr-namespace:DactyloTest" 
+        xmlns:control = "clr-namespace:DactyloTest"
         mc:Ignorable="d"
         Title="Scores - DactyloTest" Height="641" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D">
     <Grid>
@@ -23,11 +23,12 @@
                     <Button x:Name="OnlyMyScores" Click="FilterBtn_Click" Canvas.Left="131" Canvas.Top="79" Width="128" Height="35" Style="{StaticResource RoundBasicBtn}">Mes scores</Button>
                     <Button x:Name="AllScores" Click="FilterBtn_Click" Width="92" Content="Tous" Canvas.Top="79" Canvas.Left="15" Height="35" Style="{StaticResource SelectedRoundBtn}"/>
                     <Button x:Name="QuitScores" Click="QuitScores_Click" Width="150" Content="Revenir au jeu" Canvas.Top="12" Canvas.Left="1057" Height="36" Style="{StaticResource RoundBasicBtn}"/>
-                    <Button x:Name="ShowGraph" Click="ShowGraph_Click" Width="208" Content="Afficher le graphique" Canvas.Top="84" Canvas.Left="999" Height="36" Style="{StaticResource RoundBasicBtn}"/>
+                    <Button x:Name="ShowGraphOrTable" Click="ShowGraph_Click" Width="131" Content="GRAPHIQUE" FontWeight="Bold" Canvas.Top="79" Canvas.Left="1076" Height="36" Style="{StaticResource RoundBasicBtn}"/>
                 </Canvas>
-                <control:Graph x:Name="ScoreGraph" Visibility="Hidden"/>
                 <Grid x:Name="scoreTable">
                 </Grid>
+                <control:GeneralGraph x:Name="GeneralGraph" Visibility="Hidden"/>
+                <control:IndividualGraph x:Name="IndividualGraph" Visibility="Hidden"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

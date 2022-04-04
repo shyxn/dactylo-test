@@ -7,7 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Graph.xaml.cs">
+    <Compile Update="GeneralGraph.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="IndividualGraph.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ScoresWindow.xaml.cs">
@@ -15,7 +18,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Graph.xaml">
+    <Page Update="GeneralGraph.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="IndividualGraph.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

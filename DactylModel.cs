@@ -106,5 +106,20 @@ namespace DactyloTest
             
             return allMeans;
         }
+        public List<HighScore> GetPersonalScore(string givenNickname)
+        {
+            return this.HighScores.Where(x => x.Nickname == givenNickname).ToList();
+        }
+    }
+    public class ChartModel
+    {
+        public DateTime DateTime { get; set; }
+        public double Value { get; set; }
+
+        public ChartModel(DateTime dateTime, double value)
+        {
+            this.DateTime = dateTime;
+            this.Value = value;
+        }
     }
 }

@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="DactyloTest.GeneralGraph"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:local="clr-namespace:DactyloTest"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance  local:GeneralGraph}" Height="430" Width="850">
+    <Canvas>
+        <TextBlock Height="51" Width="383" FontWeight="Bold" Canvas.Left="295" Canvas.Top="4" FontSize="30" FontFamily="{StaticResource Poppins}" Foreground="White" TextAlignment="Center">Moyennes des scores</TextBlock>
+        <Button x:Name="Score" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="28" Canvas.Top="74" Width="98">Score</Button>
+        <Button x:Name="CPS" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="46" Canvas.Top="124" Width="80">CPS</Button>
+        <Button x:Name="WPM" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="46" Canvas.Top="174" Width="80">WPM</Button>
+        <Button x:Name="Accuracy" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="28" Canvas.Top="224" Width="98">Accuracy</Button>
+        <lvc:CartesianChart x:Name="MainGraph" Series="{Binding SeriesCollection}" Foreground="White" FontFamily="{StaticResource Poppins}" LegendLocation="Right" Height="323" Canvas.Left="178" Canvas.Top="60" Width="662">
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Labels="{Binding LabelsOnY}"/>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.DataTooltip>
+                <lvc:DefaultTooltip Foreground="Black" SelectionMode="SharedYValues"></lvc:DefaultTooltip>
+            </lvc:CartesianChart.DataTooltip>
+        </lvc:CartesianChart>
+    </Canvas>
+</UserControl>

@@ -25,6 +25,15 @@ namespace DactyloTest
         private Button[] filterButtons;
         private int _selectedColumn = -1;
         private int _hoveredRow = -1;
+        private ScoreMode _showScoreMode = ScoreMode.Table;
+
+        private enum ScoreMode
+        {
+            Table,
+            GraphGeneral,
+            GraphIndividual
+        }
+
         public ScoresWindow(DactylCtrl ctrl, DactylModel dactylModel)
         {
             this._dactylCtrl = ctrl;
@@ -123,6 +132,9 @@ namespace DactyloTest
             return toolTipString;
         }
 
+        /// <summary>
+        /// Réaffiche tout le tableau en filtrant si besoin avec this._scoresCtrl.BtnFilterMode.
+        /// </summary>
         public void UpdateTable()
         {
             ClearTable();
@@ -307,9 +319,48 @@ namespace DactyloTest
             clickedBtn.Style = Application.Current.FindResource("SelectedRoundBtn") as Style;
 
             this._scoresCtrl.BtnFilterMode = clickedBtn.Name;
-            this.UpdateTable();
-        }
 
+            // Changer l'écran à afficher, en fonction de ce qui a été cliqué
+            switch (this._scoresCtrl.BtnFilterMode)
+            {
+                case "AllScores":
+                    if (this._showScoreMode != ScoreMode.Table)
+                    {
+                        this._showScoreMode = ScoreMode.GraphGeneral;
+                    }
+                    break;
+                case "OnlyMyScores":
+                    if (this._showScoreMode != ScoreMode.Table)
+                    {
+                        this._showScoreMode = ScoreMode.GraphIndividual;
+                    }
+                    break;
+            }
+            this.UpdateTable();
+            UpdateDisplay();
+        }
+        /// <summary>
+        /// Actualise en fonction de this._showScoreMode (si c'est le tableau, le graphique général ou le graphique personnel).
+        /// </summary>
+        private void UpdateDisplay()
+        {
+            // Désactiver tout
+            this.scoreTable.Visibility = this.GeneralGraph.Visibility = this.IndividualGraph.Visibility = Visibility.Collapsed;
+
+            // Activer ce qu'on veut
+            switch (this._showScoreMode)
+            {
+                case ScoreMode.Table:
+                    this.scoreTable.Visibility = Visibility.Visible;
+                    break;
+                case ScoreMode.GraphGeneral:
+                    this.GeneralGraph.Visibility = Visibility.Visible;
+                    break;
+                case ScoreMode.GraphIndividual:
+                    this.IndividualGraph.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
         private void QuitScores_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -317,8 +368,28 @@ namespace DactyloTest
 
         private void ShowGraph_Click(object sender, RoutedEventArgs e)
         {
-            this.scoreTable.Visibility = Visibility.Hidden;
-            this.ScoreGraph.Visibility = Visibility.Visible;
+            switch (this._showScoreMode)
+            {
+                case ScoreMode.Table:
+                    if (this._scoresCtrl.BtnFilterMode == "OnlyMyScores")
+                    {
+                        this._showScoreMode = ScoreMode.GraphIndividual;
+                    }
+                    else
+                    {
+                        this._showScoreMode = ScoreMode.GraphGeneral;
+                    }
+                    UpdateDisplay();
+                    this.ShowGraphOrTable.Content = "TABLEAU";
+                    break;
+                case ScoreMode.GraphGeneral:
+                case ScoreMode.GraphIndividual:
+                default:
+                    this._showScoreMode = ScoreMode.Table;
+                    UpdateDisplay();
+                    this.ShowGraphOrTable.Content = "GRAPHIQUE";
+                    break;
+            }
         }
     }
 }
