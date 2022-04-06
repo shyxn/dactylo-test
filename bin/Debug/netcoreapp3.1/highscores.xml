@@ -143,4 +143,17 @@
     <TextIndex>2</TextIndex>
     <Date>2022-04-04T16:21:53.7627908+02:00</Date>
   </HighScore>
+  <HighScore>
+    <Score>931</Score>
+    <CPS>8.303403991798627</CPS>
+    <WPM>98</WPM>
+    <Nickname>Pseudo</Nickname>
+    <Accuracy>0.9504716981132075</Accuracy>
+    <TotalStrokes>424</TotalStrokes>
+    <CorrectStrokes>403</CorrectStrokes>
+    <IncorrectStrokes>21</IncorrectStrokes>
+    <Time>PT48.534312S</Time>
+    <TextIndex>2</TextIndex>
+    <Date>2022-04-05T11:13:24.5926451+02:00</Date>
+  </HighScore>
 </ArrayOfHighScore>

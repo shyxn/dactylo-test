@@ -208,7 +208,29 @@ namespace DactyloTest
             {
                 MessageBox.Show(ex.Message);
             }
-            clickedBtn.Style = Application.Current.FindResource("SelectedRoundBtn") as Style;
+            StyleSelectedButton(clickedBtn);
+        }
+        private void StyleSelectedButton(Button btn)
+        {
+            btn.Style = Application.Current.FindResource("SelectedRoundBtn") as Style;
+            string newStyleName = "";
+            switch (btn.Name)
+            {
+                case "Score":
+                    newStyleName = "SelectedRoundBtn";
+                    break;
+                case "CPS":
+                    newStyleName = "SelectedCPSRoundBtn";
+                    break;
+                case "WPM":
+                    newStyleName = "SelectedWPMRoundBtn";
+                    break;
+                case "Accuracy":
+                    newStyleName = "SelectedAccuracyRoundBtn";
+                    break;
+            }
+
+            btn.Style = Application.Current.FindResource(newStyleName) as Style;
         }
     }
 }

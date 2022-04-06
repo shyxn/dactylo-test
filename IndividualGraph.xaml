@@ -7,17 +7,19 @@
              xmlns:local="clr-namespace:DactyloTest"
              mc:Ignorable="d" d:DataContext="{d:DesignInstance  local:IndividualGraph}" Height="467" Width="850">
     <Canvas>
-        <TextBlock Height="51" Width="383" FontWeight="Bold" Canvas.Left="295" Canvas.Top="43" FontSize="30" FontFamily="{StaticResource Poppins}" Foreground="White" TextAlignment="Center">Mes scores</TextBlock>
-        <Button x:Name="Score" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="28" Canvas.Top="113" Width="98">Score</Button>
-        <Button x:Name="CPS" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="46" Canvas.Top="163" Width="80">CPS</Button>
-        <Button x:Name="WPM" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="46" Canvas.Top="213" Width="80">WPM</Button>
-        <Button x:Name="Accuracy" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="28" Canvas.Top="263" Width="98">Accuracy</Button>
-        <lvc:CartesianChart x:Name="MainGraph" Series="{Binding SeriesCollection}" Foreground="White" LegendLocation="Right" Height="323" Canvas.Left="178" Canvas.Top="99" Width="662">
+        <TextBlock Height="51" Width="383" FontWeight="Bold" Canvas.Left="295" Canvas.Top="4" FontSize="30" FontFamily="{StaticResource Poppins}" Foreground="White" TextAlignment="Center">Mes scores</TextBlock>
+        <Button x:Name="Score" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="28" Canvas.Top="74" Width="98">Score</Button>
+        <Button x:Name="CPS" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="46" Canvas.Top="124" Width="80">CPS</Button>
+        <Button x:Name="WPM" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="46" Canvas.Top="174" Width="80">WPM</Button>
+        <Button x:Name="Accuracy" Click="Button_Click" Style="{StaticResource RoundBasicBtn}" Canvas.Left="28" Canvas.Top="224" Width="98">Accuracy</Button>
+        <lvc:CartesianChart x:Name="MainGraph" Series="{Binding SeriesCollection}" FontFamily="Poppins" Foreground="White" LegendLocation="Right" Height="323" Canvas.Left="178" Canvas.Top="60" Width="662">
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis 
                     LabelFormatter="{Binding XDateFormatter}"
-                    MinValue="{Binding InitialDateTime.Ticks}">
-                    
+                    LabelsRotation="-45">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="1" />
+                    </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.DataTooltip>

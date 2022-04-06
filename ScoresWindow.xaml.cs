@@ -33,12 +33,12 @@ namespace DactyloTest
             GraphGeneral,
             GraphIndividual
         }
-
         public ScoresWindow(DactylCtrl ctrl, DactylModel dactylModel)
         {
             this._dactylCtrl = ctrl;
             this._dactylModel = dactylModel;
             this._scoresCtrl = new ScoresCtrl(dactylModel);
+
             InitializeComponent();
         }
 
@@ -357,9 +357,15 @@ namespace DactyloTest
                     this.GeneralGraph.Visibility = Visibility.Visible;
                     break;
                 case ScoreMode.GraphIndividual:
+                    this.IndividualGraph.InitializeGraph(GetNickname());
                     this.IndividualGraph.Visibility = Visibility.Visible;
+
                     break;
             }
+        }
+        private string GetNickname()
+        {
+            return this.nickname.Content == null ? "" : this.nickname.Content.ToString();
         }
         private void QuitScores_Click(object sender, RoutedEventArgs e)
         {

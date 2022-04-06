@@ -27,7 +27,6 @@ namespace DactyloTest
         public SeriesCollection SeriesCollection { get; set; }
         public DateTime InitialDateTime { get; set; }
         public Func<double, string> XDateFormatter { get; set; } = value => new DateTime((long)value).ToString("yyyy-MM:dd HH:mm:ss");
-        public string Nickname { get; set; }
 
         private DactylModel _dactylModel;
         private List<HighScore> _personalScores;
@@ -35,25 +34,33 @@ namespace DactyloTest
         public IndividualGraph()
         {
             InitializeComponent();
-            InitializeGraph();
         }
-        private void InitializeGraph()
+        public void InitializeGraph(string nickname)
         {
             this._dactylModel = new DactylModel();
 
             // Dictionnaire avec toutes les unités (WPM, CPS, Score et Accuracy)
-            this._personalScores = this._dactylModel.GetPersonalScore("Shyxn");
+            this._personalScores = this._dactylModel.GetPersonalScore(nickname);
 
             // Obtenir la plus petite date
-            InitialDateTime = this._personalScores.Min(x => x.Date);
-            
-            var dayConfig = Mappers.Xy<ChartModel>()
-                .X(dayModel => dayModel.DateTime.Ticks)
-                .Y(dayModel => dayModel.Value);
+            //InitialDateTime = this._personalScores.Min(x => x.Date);
 
-            SeriesCollection = new SeriesCollection(dayConfig);
-            ShowLine("Score");
+            List<string> dates = new List<string>();
+            dates.Add(null);
+            foreach (HighScore score in this._personalScores)
+            {
+                dates.Add(score.Date.ToString("G"));
+            }
+
+            SeriesCollection = new SeriesCollection();
+            if (this.SeriesCollection.Count == 0)
+            {
+                ShowLine("Score");
+            }
             this.Score.Style = Application.Current.FindResource("SelectedRoundBtn") as Style;
+
+            // Affecter les valeurs à l'axe X
+            this.MainGraph.AxisX[0].Labels = dates;
 
             // Effacer les séparateurs sur l'axe X non nécessaires
             this.MainGraph.AxisX[0].Separator.StrokeThickness = 0;
@@ -121,12 +128,16 @@ namespace DactyloTest
                     break;
             }
 
-            List<ChartModel> dataCollection = new List<ChartModel>();
+            List<double> dataCollection = new List<double>();
+            dataCollection.Add(double.NaN);
             foreach (HighScore score in this._personalScores)
             {
-                dataCollection.Add(new ChartModel(score.Date, searchUnitValue(score)));
+                dataCollection.Add(searchUnitValue(score));
             }
-            Brush fillBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(hexColor));
+            dataCollection.Add(double.NaN);
+            Brush strokeBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(hexColor));
+            Brush fillBrush = strokeBrush.Clone();
+            fillBrush.Opacity = 0.1;
 
             // Ajouter l'axe Y correspondant
             this.MainGraph.AxisY.Insert(0, new Axis()
@@ -138,7 +149,7 @@ namespace DactyloTest
                 LabelFormatter = UnitOnY,
                 Separator = new LiveCharts.Wpf.Separator()
                 {
-                    Stroke = fillBrush,
+                    Stroke = strokeBrush,
                     // Permettre des lignes quadrillées
                     StrokeDashArray = new DoubleCollection { 5 }
                 }
@@ -148,12 +159,13 @@ namespace DactyloTest
             {
                 Title = unitName,
                 Name = unitName,
-                Values = new ChartValues<ChartModel>(dataCollection), // dataCollection = Liste de ChartModels (DateTime et valeur)
+                Values = dataCollection.AsChartValues(),
                 Foreground = Brushes.White,
-                Stroke = fillBrush,
-                Fill = Brushes.Transparent,
+                Stroke = strokeBrush,
+                Fill = fillBrush,
                 DataLabels = true,
-                LabelPoint = data => UnitOnY(data.Y)
+                LabelPoint = data => UnitOnY(data.Y),
+                Margin = new Thickness(20)
             };
 
             // Ajoute la série de données
@@ -166,6 +178,29 @@ namespace DactyloTest
             {
                 line.ScalesYAt = this.MainGraph.AxisY.IndexOf(this.MainGraph.AxisY.Where(x => x.Name == line.Name).First());
             }
+        }
+
+        private void StyleSelectedButton(Button btn)
+        {
+            btn.Style = Application.Current.FindResource("SelectedRoundBtn") as Style;
+            string newStyleName = "";
+            switch (btn.Name)
+            {
+                case "Score":
+                    newStyleName = "SelectedRoundBtn";
+                    break;
+                case "CPS":
+                    newStyleName = "SelectedCPSRoundBtn";
+                    break;
+                case "WPM":
+                    newStyleName = "SelectedWPMRoundBtn";
+                    break;
+                case "Accuracy":
+                    newStyleName = "SelectedAccuracyRoundBtn";
+                    break;
+            }
+
+            btn.Style = Application.Current.FindResource(newStyleName) as Style;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -203,7 +238,7 @@ namespace DactyloTest
             {
                 MessageBox.Show(ex.Message);
             }
-            clickedBtn.Style = Application.Current.FindResource("SelectedRoundBtn") as Style;
+            StyleSelectedButton(clickedBtn);
         }
     }
 }

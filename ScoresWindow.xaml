@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="Scores - DactyloTest" Height="641" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D">
     <Grid>
+        <!-- Déplacer la scroll bar pour ne pas qu'elle englobe l'en-tête avec les boutons -->
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="15">
                 <Canvas x:Name="Titles" Height="138">
@@ -27,8 +28,8 @@
                 </Canvas>
                 <Grid x:Name="scoreTable">
                 </Grid>
-                <control:GeneralGraph x:Name="GeneralGraph" Visibility="Hidden"/>
-                <control:IndividualGraph x:Name="IndividualGraph" Visibility="Hidden"/>
+                <control:GeneralGraph x:Name="GeneralGraph" Visibility="Hidden" HorizontalAlignment="Left"/>
+                <control:IndividualGraph x:Name="IndividualGraph" Visibility="Hidden" HorizontalAlignment="Left"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

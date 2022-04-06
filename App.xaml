@@ -114,6 +114,102 @@
             </Style.Triggers>
         </Style>
 
+        <!-- Bouton sélectionné (CPS) -->
+        <Style x:Key="SelectedCPSRoundBtn" TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="BorderThickness" Value="2, 2, 2, 2"/>
+                    <Setter Property="BorderBrush" Value="#CCFCB686"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#FF212F3D"/>
+            <Setter Property="Foreground" Value="#CCFCB686"/>
+            <Setter Property="Focusable" Value="False"/>
+
+            <!--Nécessaire pour le hover-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Bouton sélectionné (WPM) -->
+        <Style x:Key="SelectedWPMRoundBtn" TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="BorderThickness" Value="2, 2, 2, 2"/>
+                    <Setter Property="BorderBrush" Value="#CCFDCFAF"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#FF212F3D"/>
+            <Setter Property="Foreground" Value="#CCFDCFAF"/>
+            <Setter Property="Focusable" Value="False"/>
+
+            <!--Nécessaire pour le hover-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- Bouton sélectionné (Accuracy) -->
+        <Style x:Key="SelectedAccuracyRoundBtn" TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="12"/>
+                    <Setter Property="BorderThickness" Value="2, 2, 2, 2"/>
+                    <Setter Property="BorderBrush" Value="#CCFDE8D8"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#FF212F3D"/>
+            <Setter Property="Foreground" Value="#CCFDE8D8"/>
+            <Setter Property="Focusable" Value="False"/>
+
+            <!--Nécessaire pour le hover-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <!-- Statistiques affichées pendant le jeu -->
         <Style x:Key="StatTxtBox" TargetType="{x:Type TextBlock}">
             <Setter Property="Height" Value="30"/>
