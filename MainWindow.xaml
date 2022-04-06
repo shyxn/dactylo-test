@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DactyloTest"
         mc:Ignorable="d"
-        Title="DactyloTest vx.x.x" Height="453" Width="800" Loaded="Window_Loaded" Background="#212F3D" WindowStartupLocation="CenterScreen">
+        Title="DactyloTest vx.x.x" Height="453" Width="800" Loaded="Window_Loaded" Background="#212F3D" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Canvas>
         <Canvas x:Name="gameCanvas" Visibility="Visible">
             <Label x:Name="nickname" Canvas.Left="42" Canvas.Top="9" Width="172" Height="24" FontFamily="Poppins" Foreground="White" FontSize="11" Padding="0,4,0,0" Content=""/>

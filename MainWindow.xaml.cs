@@ -16,7 +16,7 @@ namespace DactyloTest
         /// <summary>
         ///  Version actuelle du programme
         /// </summary>
-        private string _version = "0.0.2";
+        private string _version = "1.0.0";
         /// <summary>
         /// Contrôleur 
         /// </summary>

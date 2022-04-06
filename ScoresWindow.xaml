@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DactyloTest"
         xmlns:control = "clr-namespace:DactyloTest"
         mc:Ignorable="d"
-        Title="Scores - DactyloTest" Height="641" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D">
+        Title="Scores - DactyloTest" Height="641" Width="1284" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Background="#212F3D" ResizeMode="CanMinimize">
     <Grid>
         <!-- Déplacer la scroll bar pour ne pas qu'elle englobe l'en-tête avec les boutons -->
         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -20,7 +20,7 @@
                         </Button.Template>
                     </Button>
                     <Label x:Name="nickname" Canvas.Left="309" Canvas.Top="84" Width="172" Height="24" FontFamily="Poppins" Foreground="White" FontSize="11" Padding="0,4,0,0" Content=""/>
-                    <TextBlock FontFamily="Poppins" FontSize="40" Foreground="White" Margin="15,0,0,0" FontWeight="Bold">Tableau des scores</TextBlock>
+                    <TextBlock x:Name="Titre" FontFamily="Poppins" FontSize="40" Foreground="White" Margin="15,0,0,0" FontWeight="Bold">Tableau des scores</TextBlock>
                     <Button x:Name="OnlyMyScores" Click="FilterBtn_Click" Canvas.Left="131" Canvas.Top="79" Width="128" Height="35" Style="{StaticResource RoundBasicBtn}">Mes scores</Button>
                     <Button x:Name="AllScores" Click="FilterBtn_Click" Width="92" Content="Tous" Canvas.Top="79" Canvas.Left="15" Height="35" Style="{StaticResource SelectedRoundBtn}"/>
                     <Button x:Name="QuitScores" Click="QuitScores_Click" Width="150" Content="Revenir au jeu" Canvas.Top="12" Canvas.Left="1057" Height="36" Style="{StaticResource RoundBasicBtn}"/>

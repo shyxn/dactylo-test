@@ -25,6 +25,7 @@ namespace DactyloTest
         private Button[] filterButtons;
         private int _selectedColumn = -1;
         private int _hoveredRow = -1;
+        private bool _isIndividualGraphInitialized = false;
         private ScoreMode _showScoreMode = ScoreMode.Table;
 
         private enum ScoreMode
@@ -387,6 +388,7 @@ namespace DactyloTest
                     }
                     UpdateDisplay();
                     this.ShowGraphOrTable.Content = "TABLEAU";
+                    this.Titre.Text = "Graphique des scores";
                     break;
                 case ScoreMode.GraphGeneral:
                 case ScoreMode.GraphIndividual:
@@ -394,6 +396,7 @@ namespace DactyloTest
                     this._showScoreMode = ScoreMode.Table;
                     UpdateDisplay();
                     this.ShowGraphOrTable.Content = "GRAPHIQUE";
+                    this.Titre.Text = "Tableau des scores";
                     break;
             }
         }

@@ -25,11 +25,13 @@ namespace DactyloTest
     {
 
         public SeriesCollection SeriesCollection { get; set; }
+
         public DateTime InitialDateTime { get; set; }
         public Func<double, string> XDateFormatter { get; set; } = value => new DateTime((long)value).ToString("yyyy-MM:dd HH:mm:ss");
 
         private DactylModel _dactylModel;
         private List<HighScore> _personalScores;
+        private bool _isInitialized = false;
 
         public IndividualGraph()
         {
@@ -37,13 +39,11 @@ namespace DactyloTest
         }
         public void InitializeGraph(string nickname)
         {
+            if (_isInitialized){ return; }
             this._dactylModel = new DactylModel();
 
             // Dictionnaire avec toutes les unités (WPM, CPS, Score et Accuracy)
             this._personalScores = this._dactylModel.GetPersonalScore(nickname);
-
-            // Obtenir la plus petite date
-            //InitialDateTime = this._personalScores.Min(x => x.Date);
 
             List<string> dates = new List<string>();
             dates.Add(null);
@@ -66,6 +66,7 @@ namespace DactyloTest
             this.MainGraph.AxisX[0].Separator.StrokeThickness = 0;
 
             DataContext = this;
+            _isInitialized = true;
         }
 
         public void HideLine(string unitName)

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\pe41qrd\Desktop\P_APPRO\DactyloTest\obj\Release\netcoreapp3.1\
+C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\
 DactyloTest
 none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\pe41qrd\Desktop\P_APPRO\DactyloTest\App.xaml
-11407045341
+C:\Users\pe41qrd\Desktop\dactylo-test\App.xaml
+4-1156690207
 
-8-1035385062
-1931326424394
-MainWindow.xaml;
+12-710835462
+195-1493597452
+GeneralGraph.xaml;IndividualGraph.xaml;MainWindow.xaml;ScoresWindow.xaml;
 
-True
+False
 
