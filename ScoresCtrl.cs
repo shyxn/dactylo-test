@@ -22,19 +22,7 @@ namespace DactyloTest
         public List<HighScore> GetSortedScores()
         {
             List<HighScore> allScores = this._dactylModel.HighScores;
-            //string[] headers = new string[]
-            //{
-            //    "Pseudonyme",
-            //    "Score",
-            //    "CPS",
-            //    "WPM",
-            //    "Précision",
-            //    "Frappes totales",
-            //    "incorrectes",
-            //    "Temps total",
-            //    "Texte tapé",
-            //    "Date enregistrée"
-            //};
+            
             Func<HighScore, object> HighScoreProprety = null;
             switch (this.HeaderFilterName)
             {

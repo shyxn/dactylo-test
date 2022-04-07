@@ -24,7 +24,7 @@
                     <Button x:Name="OnlyMyScores" Click="FilterBtn_Click" Canvas.Left="131" Canvas.Top="79" Width="128" Height="35" Style="{StaticResource RoundBasicBtn}">Mes scores</Button>
                     <Button x:Name="AllScores" Click="FilterBtn_Click" Width="92" Content="Tous" Canvas.Top="79" Canvas.Left="15" Height="35" Style="{StaticResource SelectedRoundBtn}"/>
                     <Button x:Name="QuitScores" Click="QuitScores_Click" Width="150" Content="Revenir au jeu" Canvas.Top="12" Canvas.Left="1057" Height="36" Style="{StaticResource RoundBasicBtn}"/>
-                    <Button x:Name="ShowGraphOrTable" Click="ShowGraph_Click" Width="131" Content="GRAPHIQUE" FontWeight="Bold" Canvas.Top="79" Canvas.Left="1076" Height="36" Style="{StaticResource RoundBasicBtn}"/>
+                    <Button x:Name="ShowGraphOrTable" Click="ShowGraph_Click" Width="131" Content="GRAPHIQUE" FontWeight="Bold" Canvas.Top="12" Canvas.Left="530" Height="36" Style="{StaticResource RoundBasicBtn}"/>
                 </Canvas>
                 <Grid x:Name="scoreTable">
                 </Grid>

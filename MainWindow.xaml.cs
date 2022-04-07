@@ -28,7 +28,7 @@ namespace DactyloTest
             this._dactylModel = new DactylModel();
             this._dactylCtrl = new DactylCtrl(this, this._dactylModel);
 
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.Title = "DactyloTest v" + this._version;
             this.title.Text = "DactyloTest (P_APPRO) v" + this._version + " - Morgane Lebre";           
@@ -43,9 +43,9 @@ namespace DactyloTest
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ShowNickNameInput();
+            this.ShowNickNameInput();
             Debug.WriteLine("La partie commence.");
-            this.InputTextBox.TextChanged += new TextChangedEventHandler(TextBox_TextChanged);
+            this.InputTextBox.TextChanged += new TextChangedEventHandler(this.TextBox_TextChanged);
             //this._dactylCtrl.StartGame();
             this.inputNickname.Focus();
         }
@@ -148,7 +148,22 @@ namespace DactyloTest
             }
             this.nickname.Content = this.inputNickname.Text;
             this._dactylCtrl.SetNickname(this.inputNickname.Text);
-            this.nicknameInputCanvas.Visibility = Visibility.Hidden;
+            this.nicknameInputCanvas.Visibility = Visibility.Collapsed;
+            if (this._dactylCtrl.SelectedGameMode is null)
+            {
+                this.selectModeCanvas.Visibility = Visibility.Visible;
+            }
+
+            // Dans le cas où on est en plein jeu...
+            if (this._dactylCtrl.IsPlaying)
+            {
+                this._dactylCtrl.StartGame(true);
+            }
+        }
+
+        private void confirmModeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.selectModeCanvas.Visibility = Visibility.Collapsed;
             this._dactylCtrl.StartGame();
         }
 
@@ -156,15 +171,14 @@ namespace DactyloTest
         {
             if (e.Key == Key.Enter)
             {
-                confirmNicknameBtn_Click(sender, e);
+                this.confirmNicknameBtn_Click(sender, e);
             }
         }
 
         private void ChangeNickname_Click(object sender, RoutedEventArgs e)
         {
             this._dactylCtrl.StopTimers();
-            this.nicknameInputCanvas.Visibility = Visibility.Visible;
-            this.inputNickname.Focus();
+            this.ShowNickNameInput();
         }
 
         private void scoreBtn_Click(object sender, RoutedEventArgs e)
@@ -172,7 +186,7 @@ namespace DactyloTest
             this._dactylCtrl.StopTimers();
             ScoresWindow scoreWindow = new ScoresWindow(this._dactylCtrl, this._dactylModel);
             scoreWindow.Show();
-            scoreWindow.Closed += ScoreWindow_Closed;
+            scoreWindow.Closed += this.ScoreWindow_Closed;
         }
 
         private void ScoreWindow_Closed(object sender, EventArgs e)
@@ -181,6 +195,87 @@ namespace DactyloTest
             {
                 this.inputNickname.Focus();
             }
+        }
+
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Border border = (Border)sender;
+            border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#CADAE8"));
+            //((Border)panel.Parent).BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F96D10"));
+        }
+
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Border border = (Border)sender;
+            border.Background = Brushes.Transparent;
+            //((Border)panel.Parent).BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#212F3D"));
+        }
+
+        // Lorsqu'un des deux modes est sélectionné.
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Border border = (Border)sender;
+            Brush unselectedBorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#212F3D"));
+            Brush selectedBorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F97924"));
+
+            this.timeModePanel.BorderBrush = unselectedBorderBrush;
+            this.textModePanel.BorderBrush = unselectedBorderBrush;
+            border.BorderBrush = selectedBorderBrush;
+
+            switch (border.Name)
+            {
+                case "timeModePanel":
+                    this._dactylCtrl.SelectedGameMode = DactylCtrl.GameMode.Time;
+                    this.timeCanvas.Visibility = Visibility.Visible;
+                    break;
+                case "textModePanel":
+                    this._dactylCtrl.SelectedGameMode = DactylCtrl.GameMode.Text;
+                    this.timeCanvas.Visibility = Visibility.Collapsed;
+                    break;
+            }
+
+            // Activer le bouton pour confirmer
+            this.confirmModeBtn.IsEnabled = true;
+        }
+
+        private void changeTime_Click(object sender, RoutedEventArgs e)
+        {
+            string btnName = ((Button)sender).Name;
+            switch (btnName)
+            {
+                case "UpMinBtn":
+                    this._dactylCtrl.TimeMinutes++;
+                    break;
+                case "UpSecBtn":
+                    this._dactylCtrl.TimeSeconds += 15;
+                    if (this._dactylCtrl.TimeSeconds >= 60)
+                    {
+                        this._dactylCtrl.TimeMinutes++;
+                        this._dactylCtrl.TimeSeconds = 0;
+                    }
+                    break;
+                case "DownMinBtn":
+                    if (this._dactylCtrl.TimeMinutes > 1)
+                    {
+                        this._dactylCtrl.TimeMinutes--;
+                    }
+                    break;
+                case "DownSecBtn":
+                    if (!(this._dactylCtrl.TimeSeconds == 0 && this._dactylCtrl.TimeMinutes == 1))
+                    {
+                        this._dactylCtrl.TimeSeconds -= 15;
+                        if (this._dactylCtrl.TimeSeconds < 0)
+                        {
+                            this._dactylCtrl.TimeSeconds = 45;
+                            this._dactylCtrl.TimeMinutes--;
+                        }
+                    }
+                    break;
+            }
+
+            // Update minuteslbl et secondslbl
+            this.MinutesLbl.Content = String.Format("{0:00}", this._dactylCtrl.TimeMinutes);
+            this.SecondsLbl.Content = String.Format("{0:00}", this._dactylCtrl.TimeSeconds);
         }
     }
 }

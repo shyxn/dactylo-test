@@ -66,7 +66,6 @@ namespace DactyloTest
             }
             Brush fillBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(hexColor));
 
-
             // Ajouter l'axe X correspondant
             this.MainGraph.AxisX.Insert(0, new Axis()
             {
@@ -171,7 +170,6 @@ namespace DactyloTest
                 }
             });
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button clickedBtn = (Button)sender;

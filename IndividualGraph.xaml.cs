@@ -103,29 +103,40 @@ namespace DactyloTest
             string hexColor = null;
             // Formattage
             Func<double, string> UnitOnY = null;
-
+            // Valeurs limites pour uniformiser les axes Y
+            double minValue = 0;
+            double maxValue = 0;
             Func<HighScore, double> searchUnitValue = null;
+
             switch (unitName)
             {
                 case "Score":
                     UnitOnY = x => string.Format("{0:0.##} pts", x);
                     hexColor = "#CCFA8334";
                     searchUnitValue = x => x.Score;
+                    minValue = 0;
+                    maxValue = 1500;
                     break;
                 case "CPS":
                     UnitOnY = x => string.Format("{0:0.00} CPS", x);
                     hexColor = "#CCFCB686";
                     searchUnitValue = x => x.CPS;
+                    minValue = 0;
+                    maxValue = 15;
                     break;
                 case "WPM":
                     UnitOnY = x => string.Format("{0:0.##} WPM", x);
                     hexColor = "#CCFDCFAF";
                     searchUnitValue = x => x.WPM;
+                    minValue = 0;
+                    maxValue = 200;
                     break;
                 case "Accuracy":
                     UnitOnY = x => string.Format("{0:0.00} %", x * 100);
                     hexColor = "#CCFDE8D8";
                     searchUnitValue = x => x.Accuracy;
+                    minValue = 0;
+                    maxValue = 1;
                     break;
             }
 
@@ -147,6 +158,8 @@ namespace DactyloTest
                 ShowLabels = true,
                 IsEnabled = false,
                 Name = unitName,
+                MinValue = minValue,
+                MaxValue = maxValue,
                 LabelFormatter = UnitOnY,
                 Separator = new LiveCharts.Wpf.Separator()
                 {
@@ -164,7 +177,7 @@ namespace DactyloTest
                 Foreground = Brushes.White,
                 Stroke = strokeBrush,
                 Fill = fillBrush,
-                DataLabels = true,
+                DataLabels = false,
                 LabelPoint = data => UnitOnY(data.Y),
                 Margin = new Thickness(20)
             };

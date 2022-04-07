@@ -1,6 +1,32 @@
 <?xml version="1.0"?>
 <ArrayOfHighScore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="HighScores.Scores">
   <HighScore>
+    <Score>475</Score>
+    <CPS>4.25</CPS>
+    <WPM>51</WPM>
+    <Nickname>Raiflon</Nickname>
+    <Accuracy>0.932</Accuracy>
+    <TotalStrokes>485</TotalStrokes>
+    <CorrectStrokes>452</CorrectStrokes>
+    <IncorrectStrokes>33</IncorrectStrokes>
+    <Time>PT1M46S</Time>
+    <TextIndex>0</TextIndex>
+    <Date>2022-03-17T15:15:00.3521024+01:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>829</Score>
+    <CPS>7.643372956791056</CPS>
+    <WPM>91</WPM>
+    <Nickname>Morgane</Nickname>
+    <Accuracy>0.9111111111111111</Accuracy>
+    <TotalStrokes>540</TotalStrokes>
+    <CorrectStrokes>492</CorrectStrokes>
+    <IncorrectStrokes>48</IncorrectStrokes>
+    <Time>PT1M4.3694875S</Time>
+    <TextIndex>1</TextIndex>
+    <Date>2022-03-24T11:57:47.3521024+01:00</Date>
+  </HighScore>
+  <HighScore>
     <Score>881</Score>
     <CPS>7.902431722759509</CPS>
     <WPM>94</WPM>

@@ -19,11 +19,19 @@ namespace DactyloTest
         public int IncorrectStrokes { get; set; } = 0;
         public string InputText { get; set; }
         public string PlayerNickname { get; set; }
+        public int TimeMinutes { get; set; } = 1;
+        public int TimeSeconds { get; set; } = 0;
+        public GameMode? SelectedGameMode { get; set; } = null;
+        public bool IsPlaying { get; set; } = false;
 
         private string _currentText;
         private System.Windows.Threading.DispatcherTimer _gameTickTimer = new System.Windows.Threading.DispatcherTimer();
         private System.Windows.Threading.DispatcherTimer _chronoTickTimer = new System.Windows.Threading.DispatcherTimer();
-
+        public enum GameMode
+        {
+            Text,
+            Time
+        }
         public DactylCtrl()
         {
 
@@ -82,6 +90,7 @@ namespace DactyloTest
             this.UpdateTexts();
             this._mainWindow.FocusInput();
             this.TotalTime = TimeSpan.Zero;
+            this.IsPlaying = true;
         }
         public void GetNewText()
         {
@@ -144,7 +153,7 @@ namespace DactyloTest
         private void EndGame()
         {
             StopTimers();
-
+            this.IsPlaying = false;
             // Gérer le score
             var score = new HighScore()
             {
