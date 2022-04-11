@@ -16,12 +16,13 @@ namespace DactyloTest
         /// <summary>
         ///  Version actuelle du programme
         /// </summary>
-        private string _version = "1.0.0";
+        private string _version = "1.1.0";
         /// <summary>
         /// Contrôleur 
         /// </summary>
         private DactylCtrl _dactylCtrl;
         private DactylModel _dactylModel;
+        private TextBlock[] _allStatsTxtBlocks;
         public MainWindow()
         {
             // Définir le pattern MVC
@@ -31,7 +32,18 @@ namespace DactyloTest
             this.InitializeComponent();
 
             this.Title = "DactyloTest v" + this._version;
-            this.title.Text = "DactyloTest (P_APPRO) v" + this._version + " - Morgane Lebre";           
+            this.title.Text = "DactyloTest (P_APPRO2) v" + this._version + " - Morgane Lebre";
+            this._allStatsTxtBlocks = new TextBlock[]
+            {
+                totalTime,
+                totalStrokes,
+                totalCorrectStrokes,
+                totalIncorrectStrokes,
+                currentWPM,
+                currentAccuracy,
+                currentWPMTitle,
+                currentAccuracyTitle
+            };
         }
         /// <summary>
         /// Affiche la fenêtre de sélection du pseudonyme
@@ -63,7 +75,7 @@ namespace DactyloTest
         /// <param name="time"></param>
         public void UpdateTime(string time)
         {
-            this.totalTime.Text = "Temps : " + time;
+            this.totalTime.Text = "Temps " + time;
         }
         public void UpdateMainText(string leftString, string midChar, string rightString)
         {
@@ -73,25 +85,36 @@ namespace DactyloTest
             this.rightSideText.Text = rightString;
 
             this.leftChars.Text = "< " + rightString.Length.ToString();
-
+        }
+        public void UpdateStatText()
+        {
             this.totalStrokes.Text = "Frappes totales : " + this._dactylCtrl.KeyStrokes.ToString();
             this.totalIncorrectStrokes.Text = "Frappes incorrectes : " + this._dactylCtrl.IncorrectStrokes.ToString();
             this.totalCorrectStrokes.Text = "Frappes correctes : " + this._dactylCtrl.CorrectStrokes.ToString();
         }
+
         public void UpdateWPM(string wpm)
         {
-            this.currentWPM.Text = "Mots/minutes : " + wpm + " MPM";
+            this.currentWPM.Text = wpm + " MPM";
         }
 
         public void UpdateAccuracy(string accuracy)
         {
-            this.currentAccuracy.Text = "Accuracy : " + accuracy + " %";
+            this.currentAccuracy.Text = accuracy + " %";
         }
-
-        public void ClearAllTexts()
+        public void ShowAllStats()
         {
-            Debug.WriteLine("Le contenu a été nettoyé.");
-            this.InputTextBox.Text = "";
+            foreach (TextBlock tb in this._allStatsTxtBlocks)
+            {
+                tb.Visibility = Visibility.Visible;
+            }
+        }
+        public void HideAllStats()
+        {
+            foreach (TextBlock tb in this._allStatsTxtBlocks)
+            {
+                tb.Visibility = Visibility.Hidden;
+            }
         }
 
         public void ShowEndMessage(string message)
@@ -276,6 +299,12 @@ namespace DactyloTest
             // Update minuteslbl et secondslbl
             this.MinutesLbl.Content = String.Format("{0:00}", this._dactylCtrl.TimeMinutes);
             this.SecondsLbl.Content = String.Format("{0:00}", this._dactylCtrl.TimeSeconds);
+        }
+
+        private void changeModeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this._dactylCtrl.StopTimers();
+            this.selectModeCanvas.Visibility = Visibility.Visible;
         }
     }
 }

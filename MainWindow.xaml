@@ -29,13 +29,24 @@
                     <TextBlock x:Name="totalStrokes" Style="{StaticResource StatTxtBox}"/>
                     <TextBlock x:Name="totalCorrectStrokes" Style="{StaticResource StatTxtBox}"/>
                     <TextBlock x:Name="totalIncorrectStrokes" Style="{StaticResource StatTxtBox}"/>
-                    <TextBlock x:Name="currentWPM" FontWeight="SemiBold" Style="{StaticResource StatTxtBox}"/>
-                    <TextBlock x:Name="currentAccuracy" FontWeight="SemiBold" Style="{StaticResource StatTxtBox}"/>
+                    <TextBlock>
+                        <TextBlock x:Name="currentWPMTitle" FontWeight="SemiBold" Style="{StaticResource StatTxtBox}" Visibility="Hidden">
+                            Mots/minute : 
+                        </TextBlock>
+                        <TextBlock x:Name="currentWPM" FontWeight="SemiBold" Foreground="#FA8334" Style="{StaticResource StatTxtBox}"/>
+                    </TextBlock>
+                    <TextBlock>
+                        <TextBlock x:Name="currentAccuracyTitle" FontWeight="SemiBold" Style="{StaticResource StatTxtBox}" Visibility="Hidden">
+                            Précision : 
+                        </TextBlock>
+                        <TextBlock x:Name="currentAccuracy" FontWeight="SemiBold" Foreground="#FA8334" Style="{StaticResource StatTxtBox}"/>
+                    </TextBlock>
                 </StackPanel>
             </Border>
 
             <Button x:Name="quitBtn" Click="quitBtn_Click" Width="86" Canvas.Left="28" Canvas.Top="350" Style="{StaticResource RoundBasicBtn}" Height="44" >Quitter</Button>
             <Button x:Name="restartBtn" Click="restartBtn_Click" Width="149" Canvas.Left="483" Canvas.Top="209" Style="{StaticResource RoundBasicBtn}">Recommencer</Button>
+            <Button x:Name="changeModeBtn" Click="changeModeBtn_Click" Width="222" Canvas.Left="483" Canvas.Top="259" Style="{StaticResource RoundBasicBtn}">Changer le mode de jeu</Button>
             <Button x:Name="scoreBtn" Click="scoreBtn_Click" Width="114" Height="28" FontSize="13" Canvas.Left="14" Canvas.Top="46" Style="{StaticResource RoundBasicBtn}">Voir les scores</Button>
             <Button x:Name="anotherTextBtn" Click="anotherTextBtn_Click" Style="{StaticResource RoundBasicBtn}" Width="207" Canvas.Left="483" Canvas.Top="159">Générer un autre texte</Button>
             <!-- Focusable = "False" sinon ça ne marche pas (merci Ahmad Jano) -->

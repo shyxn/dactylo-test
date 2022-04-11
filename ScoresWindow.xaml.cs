@@ -25,7 +25,6 @@ namespace DactyloTest
         private Button[] filterButtons;
         private int _selectedColumn = -1;
         private int _hoveredRow = -1;
-        private bool _isIndividualGraphInitialized = false;
         private ScoreMode _showScoreMode = ScoreMode.Table;
 
         private enum ScoreMode

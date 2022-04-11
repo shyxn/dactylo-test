@@ -23,6 +23,7 @@ namespace DactyloTest
         public int TimeSeconds { get; set; } = 0;
         public GameMode? SelectedGameMode { get; set; } = null;
         public bool IsPlaying { get; set; } = false;
+        private TimeSpan _maxTime;
 
         private string _currentText;
         private System.Windows.Threading.DispatcherTimer _gameTickTimer = new System.Windows.Threading.DispatcherTimer();
@@ -49,20 +50,39 @@ namespace DactyloTest
         {
             this.CalulatePassedTime();
             this.UpdateTime();
+            if (this.IsPlaying)
+            {
+                int wpm = this.CalculateWPM();
+                this._mainWindow.UpdateWPM(wpm.ToString());
 
-            int wpm = this.CalculateWPM();
-            this._mainWindow.UpdateWPM(wpm.ToString());
-
-            double accuracy = this.CalculateAccuracy();
-            this._mainWindow.UpdateAccuracy(String.Format("{0:0.00}", accuracy * 100));
+                double accuracy = this.CalculateAccuracy();
+                this._mainWindow.UpdateAccuracy(String.Format("{0:0.00}", accuracy * 100));
+            }
         }
         private void GameTickTimer_Tick(object sender, EventArgs e)
         {
             this.UpdateTexts();
+            this._mainWindow.UpdateStatText();
         }
         private void UpdateTime()
         {
-            string timeString = this.TotalTime.ToString(@"mm\:ss\.ff");
+            string timeString = String.Empty;
+            switch (this.SelectedGameMode)
+            {
+                case GameMode.Text:
+                    timeString = ": " + this.TotalTime.ToString(@"mm\:ss\.ff");
+                    break;
+                case GameMode.Time:
+                    TimeSpan leftTime = this._maxTime - this.TotalTime;
+                    if (leftTime.TotalSeconds <= 0)
+                    {
+                        this.StopTimers();
+                        this.EndGame();
+                        return;
+                    }
+                    timeString = "restant : " + leftTime.ToString(@"mm\:ss\.ff");
+                    break;
+            }
             this._mainWindow.UpdateTime(timeString);
             this._mainWindow.FocusInput();
         }
@@ -82,11 +102,16 @@ namespace DactyloTest
             KeyStrokes = 0;
             CorrectStrokes = 0;
             IncorrectStrokes = 0;
-            this._mainWindow.ClearAllTexts();
+            this._mainWindow.InputTextBox.Text = "";
+            if (this.SelectedGameMode == GameMode.Time)
+            {
+                this._maxTime = new TimeSpan(0, this.TimeMinutes, this.TimeSeconds);
+            }
             if (!restart || this._currentText is null)
             {
                 this.GetNewText();
             }
+            this._mainWindow.ShowCorrectChar();
             this.UpdateTexts();
             this._mainWindow.FocusInput();
             this.TotalTime = TimeSpan.Zero;
@@ -125,6 +150,7 @@ namespace DactyloTest
             if (this._chronoTickTimer.IsEnabled != true)
             {
                 StartTimers();
+                this._mainWindow.ShowAllStats();
             }
 
             this.KeyStrokes++;
@@ -154,6 +180,7 @@ namespace DactyloTest
         {
             StopTimers();
             this.IsPlaying = false;
+            this._mainWindow.HideAllStats();
             // Gérer le score
             var score = new HighScore()
             {
@@ -169,12 +196,17 @@ namespace DactyloTest
             };
             score.CalculateScore();
             score.CalculateSpeed();
+            string noSaveMessage = "";
             if (!string.IsNullOrEmpty(this.PlayerNickname))
             {
                 this._dactylModel.SaveHighScore(score);
             }
+            else
+            {
+                noSaveMessage = "\r\rVotre score n'a pas été enregistré.";
+            }
 
-            this._mainWindow.ShowEndMessage("Bravo " + score.Nickname + ", vous avez terminé le test en " + score.Time.ToString(@"mm\:ss\.ff") + ".\rVitesse : " + score.WPM + " MPM\rPrécision : " + String.Format("{0:0.00}", score.Accuracy * 100) + " %\rFrappes totales : " + score.TotalStrokes + "\rFrappes incorrectes : " + score.IncorrectStrokes + "\rFrappes correctes : " + score.CorrectStrokes + "\rVitesse : " + String.Format("{0:0.00}", score.CPS) + " CPS\rVotre score est de : " + score.Score);
+            this._mainWindow.ShowEndMessage("Bravo " + score.Nickname + ", vous avez terminé le test en " + score.Time.ToString(@"mm\:ss\.ff") + ".\rVitesse : " + score.WPM + " MPM\rPrécision : " + String.Format("{0:0.00}", score.Accuracy * 100) + " %\rFrappes totales : " + score.TotalStrokes + "\rFrappes incorrectes : " + score.IncorrectStrokes + "\rFrappes correctes : " + score.CorrectStrokes + "\rVitesse : " + String.Format("{0:0.00}", score.CPS) + " CPS\rVotre score est de : " + score.Score + noSaveMessage);
             this.StartGame();
         }
 
