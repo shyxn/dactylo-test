@@ -8,7 +8,7 @@
         Title="DactyloTest vx.x.x" Height="453" Width="800" Loaded="Window_Loaded" Background="#212F3D" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Canvas>
         <Canvas x:Name="gameCanvas" Visibility="Visible">
-            <Label x:Name="nickname" Canvas.Left="42" Canvas.Top="9" Width="172" Height="24" FontFamily="Poppins" Foreground="White" FontSize="11" Padding="0,4,0,0" Content=""/>
+            <Label x:Name="nickname" Canvas.Left="42" Canvas.Top="9" Width="172" Height="24" FontFamily="{StaticResource Poppins}" Foreground="White" FontSize="11" Padding="0,4,0,0" Content=""/>
             <TextBlock x:Name="leftChars" FontFamily="{StaticResource Poppins}" Foreground="White" FontSize="22" Height="30" Width="81" Canvas.Left="655" Canvas.Top="57"></TextBlock>
             <TextBox x:Name="InputTextBox" GotFocus="InputTextBox_GotFocus" FontSize="23" TextAlignment="Center" Width="1" Canvas.Left="796" Canvas.Top="236"></TextBox>
             <Rectangle Fill="#212F3D" Height="40" Width="40" Canvas.Left="757" Canvas.Top="232"/>
@@ -61,7 +61,7 @@
 
         <Border x:Name="nicknameInputCanvas" Visibility="Collapsed" BorderThickness="5" ClipToBounds="True" CornerRadius="5" Canvas.Left="263" Canvas.Top="135" BorderBrush="#FFBBCAD8">
             <Canvas Height="158" Width="264" Background="#FFBBCAD8" >
-                <TextBox x:Name="inputNickname" Width="168" Canvas.Left="48" Canvas.Top="61" Height="30" FontFamily="Poppins" TextAlignment="Center" FontSize="13" Padding="0,5,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="0,0,0,0" KeyDown="inputNickname_KeyDown">
+                <TextBox x:Name="inputNickname" Width="168" Canvas.Left="48" Canvas.Top="61" Height="30" FontFamily="{StaticResource Poppins}" TextAlignment="Center" FontSize="13" Padding="0,5,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="0,0,0,0" KeyDown="inputNickname_KeyDown">
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="14"/>
@@ -69,7 +69,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Button x:Name="confirmNicknameBtn" Canvas.Left="88" Canvas.Top="113" Click="confirmNicknameBtn_Click" Style="{StaticResource ValidateNicknameBtn}">Valider</Button>
-                <Label Canvas.Left="26" Canvas.Top="12" FontFamily="Poppins" FontSize="18" FontWeight="Bold" Height="36" Width="212" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
+                <Label Canvas.Left="26" Canvas.Top="12" FontFamily="{StaticResource Poppins}" FontSize="18" FontWeight="Bold" Height="36" Width="212" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
                     Entrez un pseudo :
                 </Label>
             </Canvas>
@@ -78,29 +78,29 @@
         <Border x:Name="selectModeCanvas" Visibility="Collapsed" BorderThickness="5" ClipToBounds="True" CornerRadius="5" Canvas.Left="166" Canvas.Top="75" BorderBrush="#FFBBCAD8" Height="288" Width="468">
             <Canvas Background="#FFBBCAD8" >
                 <Button x:Name="confirmModeBtn" Canvas.Left="185" Canvas.Top="232" Click="confirmModeBtn_Click" Style="{StaticResource ValidateModeBtn}" IsEnabled="False">Valider</Button>
-                <Label Canvas.Left="112" Canvas.Top="10" FontFamily="Poppins" FontSize="18" FontWeight="Bold" Foreground="#FF212F3D" Height="36" Width="234" HorizontalContentAlignment="Center">
+                <Label Canvas.Left="112" Canvas.Top="10" FontFamily="{StaticResource Poppins}" FontSize="18" FontWeight="Bold" Foreground="#FF212F3D" Height="36" Width="234" HorizontalContentAlignment="Center">
                     Choisir un mode de jeu
                 </Label>
 
                 <Border x:Name="timeModePanel" BorderThickness="2" ClipToBounds="True" CornerRadius="5" Canvas.Left="22" Canvas.Top="60" BorderBrush="#FF212F3D" Height="Auto" Width="186" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseDown="Border_MouseDown">
                     <StackPanel>
-                        <Label FontFamily="Poppins" FontSize="12" FontWeight="Bold" Foreground="#FF212F3D" HorizontalContentAlignment="Center" Margin="5" Content="Mode temps"/>
-                        <TextBlock FontFamily="Poppins" FontSize="11" Height="54" HorizontalAlignment="Center" Margin="10" TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="La durée du test n'excédera pas le temps choisi"/><Run Language="fr-ch" Text="."/></TextBlock>
+                        <Label FontFamily="{StaticResource Poppins}" FontSize="12" FontWeight="Bold" Foreground="#FF212F3D" HorizontalContentAlignment="Center" Margin="5" Content="Mode temps"/>
+                        <TextBlock FontFamily="{StaticResource Poppins}" FontSize="11" Height="54" HorizontalAlignment="Center" Margin="10" TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="La durée du test n'excédera pas le temps choisi"/><Run Language="fr-ch" Text="."/></TextBlock>
                         <Canvas x:Name="timeCanvas" Height="42" Visibility="Collapsed">
                             <Button x:Name="UpMinBtn" Click="changeTime_Click" Width="24" Height="18" FontSize="10" Content="▲" BorderBrush="{x:Null}" Background="{x:Null}" Canvas.Left="48" Canvas.Top="-28"/>
                             <Button x:Name="UpSecBtn" Click="changeTime_Click" Width="24" Canvas.Left="102" Canvas.Top="-28" Height="18" FontSize="10" Content="▲" BorderBrush="{x:Null}" Background="{x:Null}"/>
                             <Button x:Name="DownMinBtn" Click="changeTime_Click" Width="24" Height="18" FontSize="10" Content="▼" BorderBrush="{x:Null}" Background="{x:Null}" Canvas.Left="48" Canvas.Top="10"/>
                             <Button x:Name="DownSecBtn" Click="changeTime_Click" Width="24" Height="18" FontSize="10" Content="▼" BorderBrush="{x:Null}" Background="{x:Null}" Canvas.Left="102" Canvas.Top="10"/>
-                            <Label x:Name="MinutesLbl" Canvas.Left="47" Canvas.Top="-13" Height="23" FontFamily="Poppins">
+                            <Label x:Name="MinutesLbl" Canvas.Left="47" Canvas.Top="-13" Height="23" FontFamily="{StaticResource Poppins}">
                                 01
                             </Label>
-                            <Label Canvas.Left="69" Canvas.Top="-13" Height="23" FontWeight="Bold" FontFamily="Poppins">
+                            <Label Canvas.Left="69" Canvas.Top="-13" Height="23" FontWeight="Bold" FontFamily="{StaticResource Poppins}">
                                 min
                             </Label>
-                            <Label x:Name="SecondsLbl" Canvas.Left="101" Canvas.Top="-13" Height="23" FontFamily="Poppins">
+                            <Label x:Name="SecondsLbl" Canvas.Left="101" Canvas.Top="-13" Height="23" FontFamily="{StaticResource Poppins}">
                                 00
                             </Label>
-                            <Label Canvas.Left="123" Canvas.Top="-13" Height="23" FontWeight="Bold" FontFamily="Poppins">
+                            <Label Canvas.Left="123" Canvas.Top="-13" Height="23" FontWeight="Bold" FontFamily="{StaticResource Poppins}">
                                 s
                             </Label>
                         </Canvas>
@@ -108,8 +108,8 @@
                 </Border>
                 <Border x:Name="textModePanel" BorderThickness="2" ClipToBounds="True" CornerRadius="5" Canvas.Left="246" Canvas.Top="60" BorderBrush="#FF212F3D" Height="116" Width="186" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" MouseDown="Border_MouseDown">
                     <StackPanel>
-                        <Label FontFamily="Poppins" FontSize="12" FontWeight="Bold" Foreground="#FF212F3D" HorizontalContentAlignment="Center" Margin="5" Content="Mode texte"/>
-                        <TextBlock FontFamily="Poppins" FontSize="11" Height="54" HorizontalAlignment="Center" Margin="10" TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="Le texte devra être écrit dans son intégralité pour finir le test."/></TextBlock>
+                        <Label FontFamily="{StaticResource Poppins}" FontSize="12" FontWeight="Bold" Foreground="#FF212F3D" HorizontalContentAlignment="Center" Margin="5" Content="Mode texte"/>
+                        <TextBlock FontFamily="{StaticResource Poppins}" FontSize="11" Height="54" HorizontalAlignment="Center" Margin="10" TextWrapping="WrapWithOverflow" TextAlignment="Center"><Run Text="Le texte devra être écrit dans son intégralité pour finir le test."/></TextBlock>
                     </StackPanel>
                 </Border>
             </Canvas>

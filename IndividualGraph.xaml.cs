@@ -92,7 +92,7 @@ namespace DactyloTest
                     // Attention à bien réactualiser l'index des axes pour les prochaines séries
                     foreach (LineSeries line in SeriesCollection)
                     {
-                        line.ScalesYAt = this.MainGraph.AxisY.IndexOf(this.MainGraph.AxisY.Where(x => x.Name == line.Name).First());
+                        line.ScalesYAt = this.MainGraph.AxisY.IndexOf(this.MainGraph.AxisY.First(x => x.Name == line.Name));
                     }
                 }
             }

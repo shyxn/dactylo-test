@@ -94,7 +94,7 @@ namespace DactyloTest {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DactyloTest;component/generalgraph.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DactyloTest;V0.0.1.0;component/generalgraph.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\GeneralGraph.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

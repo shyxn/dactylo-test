@@ -1,17 +1,56 @@
 <?xml version="1.0"?>
 <ArrayOfHighScore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="HighScores.Scores">
   <HighScore>
-    <Score>530</Score>
-    <CPS>4.763975078632098</CPS>
-    <WPM>56</WPM>
-    <Nickname>Loïc</Nickname>
-    <Accuracy>0.9460093896713615</Accuracy>
-    <TotalStrokes>426</TotalStrokes>
+    <Score>1140</Score>
+    <CPS>9.788724517852064</CPS>
+    <WPM>116</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9829268292682927</Accuracy>
+    <TotalStrokes>410</TotalStrokes>
     <CorrectStrokes>403</CorrectStrokes>
-    <IncorrectStrokes>23</IncorrectStrokes>
-    <Time>PT1M24.5932217S</Time>
+    <IncorrectStrokes>7</IncorrectStrokes>
+    <Time>PT41.1698173S</Time>
     <TextIndex>2</TextIndex>
-    <Date>2022-03-23T14:06:57.6356461+01:00</Date>
+    <Date>2022-04-04T16:21:53.7627908+02:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>1018</Score>
+    <CPS>8.838835528004463</CPS>
+    <WPM>105</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9699570815450643</Accuracy>
+    <TotalStrokes>466</TotalStrokes>
+    <CorrectStrokes>452</CorrectStrokes>
+    <IncorrectStrokes>14</IncorrectStrokes>
+    <Time>PT51.137958S</Time>
+    <TextIndex>0</TextIndex>
+    <Date>2022-03-29T08:24:50.7448161+02:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>1002</Score>
+    <CPS>8.762877147325838</CPS>
+    <WPM>104</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9637526652452025</Accuracy>
+    <TotalStrokes>469</TotalStrokes>
+    <CorrectStrokes>452</CorrectStrokes>
+    <IncorrectStrokes>17</IncorrectStrokes>
+    <Time>PT51.5812321S</Time>
+    <TextIndex>0</TextIndex>
+    <Date>2022-04-11T08:54:48.4226728+02:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>1000</Score>
+    <CPS>8.784946219049722</CPS>
+    <WPM>104</WPM>
+    <Nickname>Shyxn</Nickname>
+    <Accuracy>0.9618138424821002</Accuracy>
+    <TotalStrokes>419</TotalStrokes>
+    <CorrectStrokes>403</CorrectStrokes>
+    <IncorrectStrokes>16</IncorrectStrokes>
+    <Time>PT45.8739291S</Time>
+    <TextIndex>2</TextIndex>
+    <Date>2022-03-29T08:22:18.9027368+02:00</Date>
   </HighScore>
   <HighScore>
     <Score>965</Score>
@@ -53,19 +92,6 @@
     <Date>2022-03-25T10:32:23.2826119+01:00</Date>
   </HighScore>
   <HighScore>
-    <Score>688</Score>
-    <CPS>6.462021687548562</CPS>
-    <WPM>76</WPM>
-    <Nickname>Risa</Nickname>
-    <Accuracy>0.9056179775280899</Accuracy>
-    <TotalStrokes>445</TotalStrokes>
-    <CorrectStrokes>403</CorrectStrokes>
-    <IncorrectStrokes>42</IncorrectStrokes>
-    <Time>PT1M2.3643837S</Time>
-    <TextIndex>2</TextIndex>
-    <Date>2022-03-28T15:03:18.2646136+02:00</Date>
-  </HighScore>
-  <HighScore>
     <Score>699</Score>
     <CPS>6.468277096841666</CPS>
     <WPM>77</WPM>
@@ -79,43 +105,30 @@
     <Date>2022-03-28T15:06:05.4959409+02:00</Date>
   </HighScore>
   <HighScore>
-    <Score>1000</Score>
-    <CPS>8.784946219049722</CPS>
-    <WPM>104</WPM>
-    <Nickname>Shyxn</Nickname>
-    <Accuracy>0.9618138424821002</Accuracy>
-    <TotalStrokes>419</TotalStrokes>
+    <Score>688</Score>
+    <CPS>6.462021687548562</CPS>
+    <WPM>76</WPM>
+    <Nickname>Risa</Nickname>
+    <Accuracy>0.9056179775280899</Accuracy>
+    <TotalStrokes>445</TotalStrokes>
     <CorrectStrokes>403</CorrectStrokes>
-    <IncorrectStrokes>16</IncorrectStrokes>
-    <Time>PT45.8739291S</Time>
+    <IncorrectStrokes>42</IncorrectStrokes>
+    <Time>PT1M2.3643837S</Time>
     <TextIndex>2</TextIndex>
-    <Date>2022-03-29T08:22:18.9027368+02:00</Date>
+    <Date>2022-03-28T15:03:18.2646136+02:00</Date>
   </HighScore>
   <HighScore>
-    <Score>1018</Score>
-    <CPS>8.838835528004463</CPS>
-    <WPM>105</WPM>
-    <Nickname>Shyxn</Nickname>
-    <Accuracy>0.9699570815450643</Accuracy>
-    <TotalStrokes>466</TotalStrokes>
-    <CorrectStrokes>452</CorrectStrokes>
-    <IncorrectStrokes>14</IncorrectStrokes>
-    <Time>PT51.137958S</Time>
-    <TextIndex>0</TextIndex>
-    <Date>2022-03-29T08:24:50.7448161+02:00</Date>
-  </HighScore>
-  <HighScore>
-    <Score>1140</Score>
-    <CPS>9.788724517852064</CPS>
-    <WPM>116</WPM>
-    <Nickname>Shyxn</Nickname>
-    <Accuracy>0.9829268292682927</Accuracy>
-    <TotalStrokes>410</TotalStrokes>
+    <Score>530</Score>
+    <CPS>4.763975078632098</CPS>
+    <WPM>56</WPM>
+    <Nickname>Loïc</Nickname>
+    <Accuracy>0.9460093896713615</Accuracy>
+    <TotalStrokes>426</TotalStrokes>
     <CorrectStrokes>403</CorrectStrokes>
-    <IncorrectStrokes>7</IncorrectStrokes>
-    <Time>PT41.1698173S</Time>
+    <IncorrectStrokes>23</IncorrectStrokes>
+    <Time>PT1M24.5932217S</Time>
     <TextIndex>2</TextIndex>
-    <Date>2022-04-04T16:21:53.7627908+02:00</Date>
+    <Date>2022-03-23T14:06:57.6356461+01:00</Date>
   </HighScore>
   <HighScore>
     <Score>475</Score>
@@ -131,16 +144,29 @@
     <Date>2022-03-17T15:15:00.3521024+01:00</Date>
   </HighScore>
   <HighScore>
-    <Score>1002</Score>
-    <CPS>8.762877147325838</CPS>
-    <WPM>104</WPM>
-    <Nickname>Shyxn</Nickname>
-    <Accuracy>0.9637526652452025</Accuracy>
-    <TotalStrokes>469</TotalStrokes>
-    <CorrectStrokes>452</CorrectStrokes>
-    <IncorrectStrokes>17</IncorrectStrokes>
-    <Time>PT51.5812321S</Time>
+    <Score>913</Score>
+    <CPS>8.149245393458642</CPS>
+    <WPM>96</WPM>
+    <Nickname>Lourd</Nickname>
+    <Accuracy>0.9513618677042801</Accuracy>
+    <TotalStrokes>514</TotalStrokes>
+    <CorrectStrokes>489</CorrectStrokes>
+    <IncorrectStrokes>25</IncorrectStrokes>
+    <Time>PT1M0.0055559S</Time>
     <TextIndex>0</TextIndex>
-    <Date>2022-04-11T08:54:48.4226728+02:00</Date>
+    <Date>2022-05-02T11:20:14.8457166+02:00</Date>
+  </HighScore>
+  <HighScore>
+    <Score>796</Score>
+    <CPS>7.332061489507158</CPS>
+    <WPM>87</WPM>
+    <Nickname>Lourd</Nickname>
+    <Accuracy>0.9147609147609148</Accuracy>
+    <TotalStrokes>481</TotalStrokes>
+    <CorrectStrokes>440</CorrectStrokes>
+    <IncorrectStrokes>41</IncorrectStrokes>
+    <Time>PT1M0.0104078S</Time>
+    <TextIndex>4</TextIndex>
+    <Date>2022-05-02T11:21:30.0725478+02:00</Date>
   </HighScore>
 </ArrayOfHighScore>

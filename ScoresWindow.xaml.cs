@@ -264,7 +264,7 @@ namespace DactyloTest
                     case null:
                         filterMode = "Descending";
                         filterName = clickedBtn.Content.ToString();
-                        sortIcon = " ⮟";
+                        sortIcon = " ▼";
                         break;
                     case "Ascending":
                         filterMode = null;
@@ -273,7 +273,7 @@ namespace DactyloTest
                     case "Descending":
                         filterMode = "Ascending";
                         filterName = clickedBtn.Content.ToString().Substring(0, clickedBtn.Content.ToString().Length - 2);
-                        sortIcon = " ⮝";
+                        sortIcon = " ▲";
                         break;
                 }
                 if (filterMode == null)
@@ -292,7 +292,7 @@ namespace DactyloTest
                 Debug.WriteLine("C'est pas le même bouton qu'avant");
                 filterMode = "Descending";
                 filterName = clickedBtn.Content.ToString();
-                sortIcon = " ⮟";
+                sortIcon = " ▼";
 
                 // le bouton précédent a son nom originel
                 this._scoresCtrl.PreviousBtn.Content = this._scoresCtrl.HeaderFilterName;

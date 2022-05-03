@@ -31,7 +31,6 @@ C:\Users\pe41qrd\Desktop\dactylo-test\bin\Release\netcoreapp3.1\DactyloTest.pdb
 C:\Users\pe41qrd\Desktop\dactylo-test\bin\Release\netcoreapp3.1\LiveCharts.dll
 C:\Users\pe41qrd\Desktop\dactylo-test\bin\Release\netcoreapp3.1\LiveCharts.Wpf.dll
 C:\Users\pe41qrd\Desktop\dactylo-test\bin\Release\netcoreapp3.1\Interop.VBIDE.dll
-C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\DactyloTest.csproj.AssemblyReference.cache
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\Interop.VBIDE.dll
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\DactyloTest.csproj.ResolveComReference.cache
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\GeneralGraph.g.cs
@@ -56,3 +55,4 @@ C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\DactyloTest.cspr
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\DactyloTest.dll
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\DactyloTest.pdb
 C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\DactyloTest.genruntimeconfig.cache
+C:\Users\pe41qrd\Desktop\dactylo-test\obj\Release\netcoreapp3.1\DactyloTest.csproj.AssemblyReference.cache
